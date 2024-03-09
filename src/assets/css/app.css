@@ -1,0 +1,12 @@
+:root{
+    --bg: rgba(212, 212, 212, 0.2);
+}
+
+.bg-theme{
+    background-color: var(--bg);
+}
+
+.border{
+    border-radius: 1rem;
+    border: 0.5rem black;
+}
