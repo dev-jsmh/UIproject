@@ -1,0 +1,29 @@
+<div id="clients">
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Cc</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Barrio</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let client of clients">
+                <th scope="row">{{client.id}}</th>
+                <td>{{client.name}}</td>
+                <td>{{client.lastName}}</td>
+                <td>{{client.neighborhood}}</td>
+                <td>
+                    <!-- client details boton -->
+                    <a type="button" href="clients/1/details"><i class="bi bi-eye"></i></a>
+                    <a type="button" data-bs-toggle="modal" data-bs-target="#modal_For_validate_delete"><i class="bi bi-trash"></i></a>
+                    <a type="button" data-bs-toggle="modal" data-bs-target="#modal_modify_client"><i class="bi bi-pencil"></i></a>
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+</div>
