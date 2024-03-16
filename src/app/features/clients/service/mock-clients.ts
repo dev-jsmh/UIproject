@@ -1,4 +1,4 @@
-import { Client } from "./CLIENTS";
+import { Client } from "../service/CLIENTS";
 
 export const clientList: Client[] = [
     {
