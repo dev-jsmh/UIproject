@@ -1,7 +1,7 @@
 import { CommonModule, NgFor } from '@angular/common';
 import { Component } from '@angular/core';
-import { Client } from './CLIENTS';
-import { clientList } from './mock-clients';
+import { Client } from '../../../service/CLIENTS';
+import { clientList } from '../../../service/mock-clients';
 
 @Component({
   selector: 'app-clients',

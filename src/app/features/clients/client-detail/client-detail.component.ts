@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavigationBarClientsComponent } from '../clients/components/navigationBar/navigation-bar-clients/navigation-bar-clients.component';
+import { NavigationBarClientsComponent } from '../shared/navigationBar/navigation-bar-clients/navigation-bar-clients.component';
 
 @Component({
   selector: 'app-client-detail',

@@ -1,21 +1,23 @@
-<app-navigation-bar-clients></app-navigation-bar-clients>
-
 <!-- en el contenedor dashboard se introducirán todas las visas que se relacionan con el inventario. 
         es dinamico y cambiará su contenido segun la vista -->
         <div class="container" id="dashboard">
             <!-- boton de crear registros -->
-            <button class="btn btn-success mt-2" type="button" data-bs-toggle="modal"
-                data-bs-target="#modal_create_client"><i class="bi bi-plus-circle"></i> Añadir cliente</button>
-    
+            <a
+            class="btn btn-success mt-2" 
+         
+            href="/clients/create">
+            <i class="bi bi-plus-circle"></i>
+             Añadir cliente</a>
+        
             <app-client-search-form></app-client-search-form>
-    
+        
             <!-- clients container -->
             <h1 class="mb-3 text-center">Clientes</h1>
             <!-- barra separadora -->
             <div style="height: 0.5rem;background-color:rgb(173, 173, 173);"></div>
             <!-- List of clients -->
             <app-clients-list></app-clients-list>
-    
+        
         </div>
         <!-- ventana modal para validación de eliminar un registro -->
         <div class="modal fade" id="modal_For_validate_delete" data-bs-backdrop="static">
@@ -23,14 +25,14 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">ventana de validación</h4>
-                            <!-- button for close modal windows -->
-                            <button class="btn btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                        <!-- button for close modal windows -->
+                        <button class="btn btn-close" data-bs-dismiss="modal" aria-label="close"></button>
                     </div>
-    
+        
                     <div class="modal-body">
                         <p>Estas seguro que quieres realizar esta acción</p>
                     </div>
-    
+        
                     <div class="modal-footer">
                         <button class="btn btn-primary">Aceptar</button>
                         <button class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
