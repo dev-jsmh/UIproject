@@ -16,7 +16,7 @@ export const clientRoutes: Routes = [
       { path:'create', component: CreateClientComponent},
       //{ path:'/modify', component: ClientDetailComponent},
       //{ path:'/modify', component: ClientDetailComponent},
-      { path: 'details', component: ClientDetailComponent },
+      { path: ':id/details', component: ClientDetailComponent },
 
     ]
   }

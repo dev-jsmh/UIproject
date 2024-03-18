@@ -1,11 +1,8 @@
 <!-- en el contenedor dashboard se introducirán todas las visas que se relacionan con el inventario. 
         es dinamico y cambiará su contenido segun la vista -->
-        <div class="container" id="dashboard">
+        
             <!-- boton de crear registros -->
-            <a
-            class="btn btn-success mt-2" 
-         
-            href="/clients/create">
+            <a class="btn btn-success mt-2" routerLink="create">
             <i class="bi bi-plus-circle"></i>
              Añadir cliente</a>
         
@@ -17,8 +14,7 @@
             <div style="height: 0.5rem;background-color:rgb(173, 173, 173);"></div>
             <!-- List of clients -->
             <app-clients-list></app-clients-list>
-        
-        </div>
+            
         <!-- ventana modal para validación de eliminar un registro -->
         <div class="modal fade" id="modal_For_validate_delete" data-bs-backdrop="static">
             <div class="modal-dialog modal-dialog-centered">

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationBarClientsComponent } from '../shared/navigationBar/navigation-bar-clients/navigation-bar-clients.component';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { ClientSearchFormComponent } from '../shared/client-search-form/client-search-form.component';
 import { ClientsListComponent } from './components/clients-list/clients-list.component';
 
@@ -9,6 +9,7 @@ import { ClientsListComponent } from './components/clients-list/clients-list.com
   standalone: true,
   imports: [ 
     RouterOutlet,
+    RouterLink,
     ClientSearchFormComponent,
     ClientsListComponent,
     NavigationBarClientsComponent],

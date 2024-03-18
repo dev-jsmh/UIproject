@@ -11,16 +11,16 @@
         <div class="col-12 col-md-9 px-2 mb-3">
             <div class="row">
                 <div class="mb-3">
-                    Nombre completo
+                    {{client?.id}}
                 </div>
                 <div class="mb-3">
-                    Dirección: calle 34# 23-104
+                    Dirección: {{client?.neighborhood}}
                 </div>
                 <div class="mb-3">
                     Barrio: los caracoles
                 </div>
                 <div class="mb-3">
-                    Fecha proximo mantenimiento: 4 de Diciembre 2023
+                    Fecha proximo mantenimiento: {{client?.lastMeet}}
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
             <div class="scrollable" style="height:300px; overflow-y: scroll;">
                 <div id="product">
                     <div class="mb-3">
-                        <p>P001 filtro purificador 25/julio/2023</p>
+                        <p>{{client?.purchasedServices}}</p>
                     </div>
                     <div class="mb-3">
                         <p>P001 filtro purificador 25/julio/2023</p>
