@@ -1,5 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable,} from '@angular/core';
 import { Client } from './IClient';
+import { HttpClient } from '@angular/common/http';
+import { ApiMainUrl } from '../../apiConfig';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +12,20 @@ export class ClientService {
 /*
    * i defined here an array for the clients data
    */
-private ClientList: Client[] = [
+private ApiMainUrl: String = "https://localhost:8080/Api/v1";
+     
+private ClientList: Client[] = [];
+
+private header = {Accept:'application/json'};
+
+/*
+[
   {
     id: 1,
     profileImg: "profile img",
     name: "Dummy",
     lastName: "Client",
+    phone: "1111111111",
     neighborhood: "noodland",
     lastMeet: "15 julio 2023",
     purchasedServices: {
@@ -27,6 +39,7 @@ private ClientList: Client[] = [
   {
     id: 1,
     profileImg: "profile img",
+    phone: "3156816116",
 
     name: "jhonatan",
     lastName: "Martinez",
@@ -38,6 +51,7 @@ private ClientList: Client[] = [
   {
     id: 2,
     profileImg: "profile img",
+    phone: "2222222",
 
     name: "Angel",
     lastName: "Martinez",
@@ -49,7 +63,7 @@ private ClientList: Client[] = [
   {
     id: 3,
     profileImg: "profile img",
-
+    phone: "33333333",
     name: "Maria Luisa",
     lastName: "Martinez",
     neighborhood: "Los caracoles",
@@ -60,7 +74,7 @@ private ClientList: Client[] = [
   {
     id: 4,
     profileImg: "profile img",
-
+    phone: "4444444444",
     name: "Erick",
     lastName: "Martinez",
     neighborhood: "Los caracoles",
@@ -71,7 +85,7 @@ private ClientList: Client[] = [
   {
     id: 4,
     profileImg: "profile img",
-
+    phone: "5555555555",
     name: "Manuel",
     lastName: "Palomino",
     neighborhood: "San Fernando",
@@ -82,7 +96,7 @@ private ClientList: Client[] = [
   {
     id: 6,
     profileImg: "profile img",
-
+    phone: "1717171717",
     name: "Dana",
     lastName: "Palomino",
     neighborhood: "San Fernando",
@@ -93,7 +107,7 @@ private ClientList: Client[] = [
   {
     id: 7,
     profileImg: "profile img",
-
+    phone: "8888888888",
     name: "Mari Sol",
     lastName: "Palomino",
     neighborhood: "San Fernando",
@@ -104,7 +118,7 @@ private ClientList: Client[] = [
   {
     id: 8,
     profileImg: "profile img",
-
+    phone: "8888888888",
     name: "Mari Jose",
     lastName: "Palomino",
     neighborhood: "San Fernando",
@@ -113,21 +127,22 @@ private ClientList: Client[] = [
     purchasedProducts: []
   }
 ];
-constructor() { }
-/**
- * Here i created a method to get all the 
- * clients that exists and i will return 
- * an array of them
- */
-getClients(): Client[] {
-  return this.ClientList;
-}
+*/
+
+constructor( private http: HttpClient) {}
 
 getClientById(id: Number): Client | undefined {
   return this.ClientList.find(
     client => client.id === id
   );
-
 }
 
+ /**
+  * method that uses httpClient to consume api
+  */
+getClients(): Observable<Client[]> {
+  return this.http.get<Client[]>(`${ApiMainUrl}/clients`, {headers: this.header})
+
+};
+ 
 }

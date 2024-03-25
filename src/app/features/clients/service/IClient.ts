@@ -1,10 +1,14 @@
 export interface Client {
-    id?: number,
-    profileImg: String,
-    name: String,
-    lastName: String,
-    neighborhood: String,
-    lastMeet: String,
-    purchasedServices: {},
-    purchasedProducts: {}
+    id: Number,
+    dni: String,
+    phone: String,
+    first_name: String,
+    secund_name: String,
+    first_lastname: String,
+    secund_lastname: String,
+    address: String,
+    neighborhood_id: Number,
+    image: String,
+    last_meet: String,
+    
 }

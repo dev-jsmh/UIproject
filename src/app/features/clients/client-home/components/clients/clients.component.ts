@@ -1,5 +1,8 @@
+// Jhonatan Samuel Martinez Hernandez
+// Análisis y desarrollo de software
+
 import { CommonModule, NgFor } from '@angular/common';
-import { Component, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Client } from '../../../service/IClient';
 import { ClientService } from '../../../service/client.service';
@@ -16,7 +19,7 @@ import { ClientService } from '../../../service/client.service';
   templateUrl: './clients.component.html',
   styleUrl: './clients.component.css'
 })
-export class ClientsComponent {
+export class ClientsComponent implements OnInit {
 
   clients:Client[] = [];
 
@@ -25,15 +28,12 @@ export class ClientsComponent {
    * for the clients component
    */
 
-  constructor( clientService: ClientService ){
+  constructor( private clientService: ClientService ){}
 
-    /* set the return value of the 
-    get clients method into the list 
-    of clients 
-    */
-this.clients = clientService.getClients();
-    
-    
+  ngOnInit(): void {
+    this.clientService.getClients().subscribe((clients) => {
+      console.log(clients);
+    });
   }
 
 }

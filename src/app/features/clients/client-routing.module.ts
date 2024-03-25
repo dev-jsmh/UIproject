@@ -5,6 +5,9 @@ import { ClientDetailComponent } from './client-detail/client-detail.component';
 import { ClientDashboardComponent } from './client-dashboard/client-dashboard.component';
 import { ClientHomeComponent } from './client-home/client-home.component';
 import { CreateClientComponent } from './create-client/create-client.component';
+import { ClientModifyComponent } from './client-modify/client-modify.component';
+
+
 
 export const clientRoutes: Routes = [
 
@@ -15,7 +18,7 @@ export const clientRoutes: Routes = [
 
       { path:'create', component: CreateClientComponent},
       //{ path:'/modify', component: ClientDetailComponent},
-      //{ path:'/modify', component: ClientDetailComponent},
+      { path:':id/modify', component: ClientModifyComponent},
       { path: ':id/details', component: ClientDetailComponent },
 
     ]
@@ -25,9 +28,7 @@ export const clientRoutes: Routes = [
 
 @NgModule({
   declarations: [],
-  imports: [
-    RouterModule.forChild(clientRoutes)
-  ],
+  imports: [RouterModule.forChild(clientRoutes)],
   exports: [RouterModule],
 })
 

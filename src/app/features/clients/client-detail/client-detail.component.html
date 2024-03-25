@@ -1,99 +1,71 @@
-
-<div class="container mt-4">
-    <div class="row mb-2 border">
-    <h3 class="text-center" >Detalles del cliente</h3>
-        <!-- foto del cliente -->
-        <div class="col-12 col-md-3 mb-3">
-            <img style="max-width: 13rem; height: auto;" src=""
-                alt="client_profile_foto">
-        </div>
+<app-back-button></app-back-button>
+<!-- informacion del cliente-->
+<div class="row  mb-2 border" >
+    <h3 class="text-center">Detalles del cliente</h3>
+    <!-- foto del cliente -->
+    <div class="col-md-4 mb-3">
+        <img style="max-width: 13rem; height: auto;" src="" alt="client_profile_foto">
+    </div>
+    <div class="col-md-8 mb-3">
         <!-- información basica del cliente -->
         <div class="col-12 col-md-9 px-2 mb-3">
             <div class="row">
                 <div class="mb-3">
-                    {{client?.id}}
+                    id: {{client?.id}}
+                </div>
+                <div class="mb-1">
+                    <p>
+                        Nombre: {{client?.first_name}} {{client?.first_lastname}}
+                    </p>
                 </div>
                 <div class="mb-3">
-                    Dirección: {{client?.neighborhood}}
+                    Dirección: desconocida
                 </div>
                 <div class="mb-3">
-                    Barrio: los caracoles
+                    Barrio: {{client?.neighborhood_id}}
                 </div>
                 <div class="mb-3">
-                    Fecha proximo mantenimiento: {{client?.lastMeet}}
+                    Fecha proximo mantenimiento: {{client?.last_meet}}
                 </div>
             </div>
         </div>
     </div>
-    <div class="row justify-content-center">
-        <!-- lista de productos adquiridos por el cliente -->
-        <div class="col-12 col-md-5 m-1 border">
-            <h3 class="mt-4">Lista de productos adquiridos</h3>
-            <button class="btn btn-success mb-3">Añadir producto</button>
-            <div class="scrollable" style="height:300px; overflow-y: scroll;">
-                <div id="product">
-                    <div class="mb-3">
-                        <p>{{client?.purchasedServices}}</p>
-                    </div>
-                    <div class="mb-3">
-                        <p>P001 filtro purificador 25/julio/2023</p>
-                    </div>
-                    <div class="mb-3">
-                        <p>P001 filtro purificador 25/julio/2023</p>
-                    </div>
-                    <div class="mb-3">
-                        <p>P001 filtro purificador 25/julio/2023</p>
-                    </div>
-                    <div class="mb-3">
-                        <p>P001 filtro purificador 25/julio/2023</p>
-                    </div>
-                    <div class="mb-3">
-                        <p>P001 filtro purificador 25/julio/2023</p>
-                    </div>
-                    <div class="mb-3">
-                        <p>P001 filtro purificador 25/julio/2023</p>
-                    </div>
-                    <div class="mb-3">
-                        <p>P001 filtro purificador 25/julio/2023</p>
-                    </div>
+    
+</div>
+<!-- lista de productos y servicios -->
+<div class="row justify-content-center">
+    <!-- lista de productos adquiridos por el cliente -->
+    <div class="col-12 col-md-5 border innerMargin">
+        <h3 class="mt-4">Lista de productos adquiridos</h3>
+        <button class="btn btn-success mb-3">Añadir producto</button>
+        <div class="scrollable" style="height:300px; overflow-y: scroll;">
+            <div id="product">
+                <div class="mb-3">
+                    <p></p>
                 </div>
+                <div class="mb-3">
+                    <p>P001 filtro purificador 25/julio/2023</p>
+                </div>
+
             </div>
         </div>
+    </div>
 
-        <div class="col-12 col-md-5 m-1 border">
-            <!-- lista de servicios adquiridos por el cliente -->
-            <h3 class="mt-4">Lista de servicios adquiridos</h3>
-            <button class="btn btn-success mb-3">Añadir servicio</button>
-            <div class="scrollable" style="height:300px; overflow-y: scroll;">
-                <div id="services">
-                    <div class="mb-3">
-                        <p>Servicio 25/julio/2023</p>
-                    </div>
-                    <div class="mb-3">
-                        <p>Servicio 25/julio/2023</p>
-                    </div>
-                    <div class="mb-3">
-                        <p>Servicio 25/julio/2023</p>
-                    </div>
-                    <div class="mb-3">
-                        <p>Servicio 25/julio/2023</p>
-                    </div>
-                    <div class="mb-3">
-                        <p>Servicio 25/julio/2023</p>
-                    </div>
-                    <div class="mb-3">
-                        <p>Servicio 25/julio/2023</p>
-                    </div>
-                    <div class="mb-3">
-                        <p>Servicio 25/julio/2023</p>
-                    </div>
-                    <div class="mb-3">
-                        <p>Servicio 25/julio/2023</p>
-                    </div>
+    <div class="col-12 col-md-5 border innerMargin">
+        <!-- lista de servicios adquiridos por el cliente -->
+        <h3 class="mt-4">Lista de servicios adquiridos</h3>
+        <button class="btn btn-success mb-3">Añadir servicio</button>
+        <div class="scrollable" style="height:300px; overflow-y: scroll;">
+            <div id="services">
+                <div class="mb-3">
+                    <p>Servicio 25/julio/2023</p>
                 </div>
+                <div class="mb-3">
+                    <p>Servicio 25/julio/2023</p>
+                </div>
+
             </div>
         </div>
-
     </div>
 
 </div>
