@@ -6,11 +6,13 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Client } from '../service/IClient';
 import { ClientService } from '../service/client.service';
 import { BackButtonComponent } from '../shared/back-button/back-button.component';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-client-modify',
   standalone: true,
   imports: [
+    ReactiveFormsModule,
     RouterLink,
     BackButtonComponent
    ],
@@ -31,4 +33,33 @@ export class ClientModifyComponent {
     const clientId = Number(this.route.snapshot.params['id']);
     this.client = clientService.getClientById(clientId);
   }
+
+  /* Define here the a form model to modify / update clients information save in the data base*/
+modifyClientForm = new FormGroup(
+  {
+    clientIdCard: new FormControl(""),
+    clientFirstName:  new FormControl(""),
+    clientSecundtName: new FormControl(""),
+    clientFirstLastName: new FormControl(""),
+    clientSecundLastName: new FormControl(""),
+    clientPhone: new FormControl(""),
+    clientAddress: new FormControl(""),
+    clientNeighborhood: new FormControl(""),
+  }
+);
+// this method submit the data of the client that we collected from the form
+// and sends it to client service
+submitClient(){
+  this.clientService.submitClient(
+    this.modifyClientForm.value.clientFirstName ?? '',
+    this.modifyClientForm.value.clientSecundtName ?? '',
+  this.modifyClientForm.value.clientFirstLastName ?? '',
+  this.modifyClientForm.value.clientSecundLastName ?? '',
+    this.modifyClientForm.value.clientPhone ?? '',
+    this.modifyClientForm.value.clientAddress ?? '',
+    this.modifyClientForm.value.clientNeighborhood ?? '',
+
+  );
+}
+
 }

@@ -6,7 +6,6 @@ import { ClientHomeComponent } from './client-home/client-home.component';
 import { CreateClientComponent } from './create-client/create-client.component';
 import { ClientRoutsModule } from './client-routing.module';
 import { RouterModule } from '@angular/router';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 /**
  * import the related componets to clients
@@ -18,8 +17,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     
   ],
   imports: [
-    HttpClient,
-    HttpClientModule,
     CommonModule,
     ClientDashboardComponent,
     ClientDetailComponent,
