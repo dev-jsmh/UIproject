@@ -26,7 +26,7 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/assets/css/bootstrap.min.css",
+              "src/assets/css/olb_bootstrap.min.css",
               "src/assets/icons/font/bootstrap-icons.css"
             ],
             "scripts": ["src/assets/js/bootstrap.bundle.min.js"]

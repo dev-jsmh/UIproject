@@ -1,8 +1,9 @@
 import { Injectable, } from '@angular/core';
-import { Client } from './IClient';
+import { Client } from '../interfaces/IClient';
 import { HttpClient } from '@angular/common/http';
-import { ApiMainUrl } from '../../apiConfig';
+import { ApiMainUrl } from '../features/apiConfig';
 import { Observable } from 'rxjs';
+import { ClientModel } from '../models/client-model';
 
 
 @Injectable({
@@ -14,8 +15,6 @@ export class ClientService {
      * i defined here an array for the clients data
      */
   private ApiMainUrl: String = "https://localhost:8080/Api/v1";
-
-  private ClientList: Client[] = [];
 
   private header = { Accept: 'application/json' };
 
@@ -134,37 +133,64 @@ export class ClientService {
 
   // ----------------------- method definition here -----------------------
 
-  getClientById(id: Number): Client | undefined {
-    return this.ClientList.find((client) => { client.id === id });
-  }
+  getClientById(client_id: Number) {
+    // make a get request to the clients enpoint with the id for specify the client we want
+    return this.http.get<ClientModel>(`${ApiMainUrl}/clients/${client_id}`);
 
+  }
 
   //method that uses httpClient to consume api
-  getClients(): Observable<Client[]> {
-    return this.http.get<Client[]>(`${ApiMainUrl}/clients`)
-  };
+  getClients() {
+    return this.http.get(`${ApiMainUrl}/clients`);
+  }
+
+  public postClient(newclient: ClientModel) {
+    return this.http.post<ClientModel>(`${ApiMainUrl}/clients`, newclient);
+  }
+
+  deleteClient(clientId: Number) {
+    this.http.delete(`${ApiMainUrl}/clients/${clientId}`);
+  }
+
+
+  // assing existing neighborhood to new client
+
+  setClientNeigborhood(client_Id: Number, neighborhood_id:Number){
+    this.http.put(`${ApiMainUrl}/clients/${client_Id}/assign-neighborhood/${neighborhood_id}`, null ).subscribe({
+      next: (res: any) =>{
+        console.log("neighborhood assing to client successfully ", res);
+        
+      },
+      error: (error) => {
+        return {"message": "Error when trying to assing neighborhood. ", "error": error};
+      }
+    });
+  
+  }
 
   /* sends client data to back-end passing each value 
-  gather from the form that's located in create client component as agruments
-  in the submitclient method
-  */
-  submitClient(
-    clientFirstName: String,
-    clientSecundtName: String,
-    clientFirstLastname: String,
-    clientSecundLastname: String,
-    clientPhone: String,
-    clientAddress: String,
-    clientNeighborhood: String,) {
-    console.log(clientFirstName);
-    console.log(clientSecundtName);
-    console.log(clientFirstLastname);
-    console.log(clientSecundLastname);
-    console.log(clientPhone);
-    console.log(clientAddress);
-    console.log(clientNeighborhood);
+  gather from the form that's located in create client component as arguments
+  in the submitclient method. plus the id of the selected neighborhood
+  
+  ---*/
 
+  submitClient( newClient: ClientModel, neighborhood_id: number) {
+   
+   this.postClient(newClient).subscribe({
+      next: (res: ClientModel) => {
+  
+        console.log("New client created successfully", res);
+        //  makes and http put request to the api to set neighborhood 
+        // to new client and print it in console
+        this.setClientNeigborhood(res.id, neighborhood_id);
+        
+      },
+      error: (error) => {
+          return {"message": "Error when trying to save new user. ", "error": error }
+      }
+    });
 
   }
+
 
 }

@@ -7,6 +7,7 @@ import { HomeComponent } from './features/home/home.component';
 export const routes: Routes = [
     {path: '', component:HomeComponent},
     {path: 'clients', loadChildren:() => import('./features/clients/client-routing.module').then(mod => mod.ClientRoutsModule) },
+    {path:'scheduler', loadChildren: () => import('./features/scheduler/client-scheduler-routing.module').then(mod => mod.ClientSchedulerRoutingModule)},
     {path: '**', component: PageNotFoundComponent}
 
 ];

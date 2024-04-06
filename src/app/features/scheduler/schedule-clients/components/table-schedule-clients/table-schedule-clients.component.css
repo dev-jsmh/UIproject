@@ -1,0 +1,14 @@
+/*allows me determine the status of a client by a color code
+*/
+
+.ontime{
+    color: rgb(0, 128, 255);
+}
+
+.ready{
+    color: rgb(26, 196, 26);
+}
+
+.finish{
+    color: rgb(243, 41, 41);
+}

@@ -4,8 +4,8 @@
 import { CommonModule, NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Client } from '../../../service/IClient';
-import { ClientService } from '../../../service/client.service';
+import { Client } from '../../../../../interfaces/IClient';
+import { ClientService } from '../../../../../service/client.service';
 
 @Component({
   selector: 'app-clients',
@@ -21,7 +21,7 @@ import { ClientService } from '../../../service/client.service';
 })
 export class ClientsComponent implements OnInit {
 
-  clients:Client[] = [];
+  clients: any = [];
 
   /**
    * Inject the clientService class as a dependency
@@ -31,9 +31,19 @@ export class ClientsComponent implements OnInit {
   constructor( private clientService: ClientService ){}
 
   ngOnInit(): void {
-    this.clientService.getClients().subscribe((clients) => {
-      console.log(clients);
-      this.clients = clients;
+    
+    this.loadClients();
+  }
+
+  loadClients(){
+    this.clientService.getClients().subscribe({
+      next: (res: any) => {
+        this.clients = res;
+        console.log(res);
+      },
+      error: (error ) => {
+        console.log("Error al optener los clientes de la api. ", error);
+      }
     });
   }
 

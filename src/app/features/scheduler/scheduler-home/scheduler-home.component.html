@@ -1,0 +1,44 @@
+<!-- nav bar associated with the scheduler module goes here-->
+<nav class="navbar navbar-expand-md bg-dark sticky-top" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"></a>
+        <!--persona online en sesión -->
+        <div>
+            <i class="bi bi-person-circle" style="color: white; font-size: 2rem;"></i>
+            <a class="navbar-brand" href="#">Jhonatan Martinez</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav align-items-end">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="client-list">Clientes
+                    </a>
+                </li>
+               
+            
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="agenda">Agendaciones
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="calendar">Calendar
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/">Home
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- here will be render all the sections and views that belongs to this module-->
+<div class="container">
+    <router-outlet></router-outlet>
+
+</div>
