@@ -1,21 +1,86 @@
 import { Component } from '@angular/core';
 import { NavigationBarClientsComponent } from '../shared/navigationBar/navigation-bar-clients/navigation-bar-clients.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { ClientSearchFormComponent } from '../shared/client-search-form/client-search-form.component';
-import { ClientsListComponent } from './components/clients-list/clients-list.component';
+import { ClienteModalComponent } from '../shared/cliente-modal/cliente-modal.component';
+import { ClientModel } from '../../../models/client-model';
+import { ClientService } from '../../../service/client.service';
+import { NgFor } from '@angular/common';
+
 
 @Component({
   selector: 'app-client-home',
   standalone: true,
-  imports: [ 
+  imports: [
     RouterOutlet,
     RouterLink,
-    ClientSearchFormComponent,
-    ClientsListComponent,
-    NavigationBarClientsComponent],
+    NgFor,
+    NavigationBarClientsComponent,
+    ClienteModalComponent
+  ],
   templateUrl: './client-home.component.html',
   styleUrl: './client-home.component.css'
 })
 export class ClientHomeComponent {
+
+
+
+  clients: ClientModel[] = [];
+  // an array for store the filtered clients
+  filteredClients: ClientModel[] = [];
+
+  /**
+   * Inject the clientService class as a dependency
+   * for the clients component
+   */
+
+  constructor(private clientService: ClientService) {
+
+    this.loadClients();
+    
+   }
+
+
+  // make get request to api endpoint and loads the existing clients from data base
+  loadClients() {
+    this.clientService.getClients().subscribe({
+      next: (res: any) => {
+        this.clients = res;
+        console.log(res);
+        this.filteredClients = this.clients;
+      },
+      error: (error) => {
+        console.log("Error al optener los clientes de la api. ", error);
+      }
+    });
+  }
+  // deletes a specified client by its id number
+  deleteClient(id: Number) {
+    this.clientService.deleteClient(id).subscribe(
+      {
+        next: (res: any) => {
+          console.log(res)
+          this.loadClients();
+        },
+        error: (error) => {
+          console.log("client could have not been deleted correctly. ", error);
+        }
+      }
+    );
+  }
+
+  onFilter(value: String) {
+    if (!value) {
+      this.filteredClients = this.clients;
+    }
+    else {
+      this.filteredClients = this.clients.filter(
+        client => client?.first_name
+        .toLowerCase()
+        .includes(value.toLowerCase())
+        );
+    }
+
+
+  }
 
 }

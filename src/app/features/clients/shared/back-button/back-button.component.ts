@@ -1,16 +1,16 @@
 import { Location } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-back-button',
   standalone: true,
-  imports: [  ],
+  imports: [],
   templateUrl: './back-button.component.html',
   styleUrl: './back-button.component.css'
 })
 export class BackButtonComponent {
 
-  constructor(private location: Location){}
+  constructor(private location: Location) { }
 
   public goBack(): void {
     this.location.back();

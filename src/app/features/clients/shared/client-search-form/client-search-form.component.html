@@ -3,7 +3,7 @@
                 
     <!-- busqueda clientes por parametros -->
     <div class="col-12 col-md-5 d-flex mb-2">
-        <input class="form-control" type="text" id="search" placeholder="Nombre, Barrio, Apellido">
-        <button class="btn btn-success mx-2" type="submit"><i class="bi bi-search"></i></button>
+        <input class="form-control" type="text" id="search" placeholder="Nombre, Barrio, Apellido" #filter>
+        <button class="btn btn-success mx-2" type="button" (click)="onFilter(filter.value)"><i class="bi bi-search"></i></button>
     </div>
 </div>

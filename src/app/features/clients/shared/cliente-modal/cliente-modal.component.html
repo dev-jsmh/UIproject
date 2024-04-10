@@ -1,0 +1,24 @@
+<!-- ventana modal para validación de eliminar un registro -->
+<div class="modal fade" id="clientModal" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+<!-- ============ Modal title goes here ============ -->
+
+                <h4 class="modal-title">{{title}}</h4>
+                <!-- button for close modal windows -->
+                <button class="btn btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+            </div>
+
+            <div class="modal-body">
+<!-- ============ Modal message goes here ============ -->
+                <p>{{message}}</p>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary">Aceptar</button>
+                <button class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

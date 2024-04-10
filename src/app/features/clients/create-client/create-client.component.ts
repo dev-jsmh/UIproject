@@ -4,7 +4,7 @@ import { BackButtonComponent } from '../shared/back-button/back-button.component
 import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ClientService } from '../../../service/client.service';
 import { NeighborhoodService } from '../../../service/neighborhood.service';
-import { NgFor, NgIf } from '@angular/common';
+import { Location, NgFor, NgIf } from '@angular/common';
 import { NeighborhoodModel } from '../../../models/neighborhood-model';
 import { ClientModel } from '../../../models/client-model';
 
@@ -26,11 +26,12 @@ export class CreateClientComponent {
   neighborhoods: NeighborhoodModel[] = [];
 
   emptyOnSubmit: Boolean = false;
+ 
 
 
 
   // inject th clientService to handle data 
-  constructor(
+  constructor( private _location: Location,
     private fb: FormBuilder,
     private clientService: ClientService,
     private neighborhoodService: NeighborhoodService) {
@@ -49,6 +50,7 @@ export class CreateClientComponent {
   }
 
 
+
   /** Here i created a form to handle data 
    * in order to create clients in the program
    */
@@ -61,7 +63,7 @@ export class CreateClientComponent {
       secund_lastname: [''],
       phone: ['', Validators.required],
       address: [''],
-      neighborhood: ['', Validators.required],
+      neighborhood: ['', Validators.required]
     }
   );
 
@@ -81,9 +83,9 @@ export class CreateClientComponent {
       console.log("There are empty fields");
       console.log("You fill all the required data.");
 
-
     } else {
       // == extranting all client data from each Control of the form
+    let dni = Number(this.createClientForm.get('dni')?.value);
       let first_name = this.createClientForm.get('first_name')?.value;
       let secund_name = this.createClientForm.get('secund_name')?.value;
       let first_lastname = this.createClientForm.get('first_lastname')?.value;
@@ -93,9 +95,9 @@ export class CreateClientComponent {
       // extranting the id of neighborhood
       let neighborhood_id = Number(this.createClientForm.value.neighborhood);
       // create a new client object with the values that have beeen gotten from the form 
-      const newClient = new ClientModel(first_name!, secund_name!, first_lastname!, secund_lastname!, phone!, address!);
+      const newClient = new ClientModel(dni!, first_name!, secund_name!, first_lastname!, secund_lastname!, phone!, address!);
 
-      this.clientService.submitClient(newClient, neighborhood_id);
+      this.clientService.createClient(newClient, neighborhood_id);
       // reset the form 
       this.createClientForm.reset();
       // set the emptyOnSubmit variable to false if all the minimun required fields are filled correctly
@@ -124,6 +126,5 @@ export class CreateClientComponent {
 
   }
 
-  
 
 }

@@ -22,7 +22,7 @@ export class ClientModel {
    
     // constructor with basic client contact data
     public constructor(
-        
+        dni:Number,
         first_name: String,
         secund_name: String,
         first_lastname: String,
@@ -32,7 +32,7 @@ export class ClientModel {
       
 
         ){
-        
+        this.dni = dni;
         this.first_name = first_name;
         this.secund_name = secund_name;
         this.first_lastname = first_lastname;

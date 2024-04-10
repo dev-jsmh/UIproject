@@ -4,9 +4,9 @@
 import { Component } from '@angular/core';
 import { NavigationBarClientsComponent } from '../shared/navigationBar/navigation-bar-clients/navigation-bar-clients.component';
 import { ClientService } from '../../../service/client.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { BackButtonComponent } from '../shared/back-button/back-button.component';
-import { NgFor, NgIf } from '@angular/common';
+import { Location, NgFor, NgIf } from '@angular/common';
 import { ClientModel } from '../../../models/client-model';
 
 @Component({
@@ -16,7 +16,8 @@ import { ClientModel } from '../../../models/client-model';
     NavigationBarClientsComponent,
     BackButtonComponent,
     NgFor,
-    NgIf
+    NgIf,
+    RouterLink
   ],
   templateUrl: './client-detail.component.html',
   styleUrl: './client-detail.component.css'
@@ -33,14 +34,16 @@ export class ClientDetailComponent {
 
   constructor(
     private clientService: ClientService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _router: Router,
+    private _location: Location
   ) {
 
     /* find the client on the list 
     and assign it to the client variable
     */
     const clientId = parseInt(this.route.snapshot.params['id']);
-    
+
     try {
       // makes an http get request and return the desired client
       this.clientService.getClientById(clientId).subscribe(client => {
@@ -55,16 +58,17 @@ export class ClientDetailComponent {
       })
     } catch (error) {
       console.log("Error al realizar peticion del cliente a la api", error);
-      
-    }
-   
-    
 
-   
+    }
 
   }
- 
-    // validates if there are any services contained in the array
+
+  // go back button functionality
+  goBack() {
+    this._location.back();
+  }
+
+  // validates if there are any services contained in the array
   getChargedProducts(client: ClientModel): void {
     if (client.purchased_services.length === 0) {
       // false if result equals to 0
@@ -83,6 +87,22 @@ export class ClientDetailComponent {
     }
   }
   // Get client's id from the url
+
+  // delete client form data base
+  deleteClient(client_Id: Number) {
+    // calls the service and makes a delete request
+    this.clientService.deleteClient(client_Id).subscribe(
+      client => {
+        console.log(client);
+      }
+    )
+    this.goBack();
+  }
+
+  modifyClient(client_Id: Number) {
+    // takes user to a view where is able to modify client data
+    this._router.navigateByUrl(`clients/${client_Id}/modify`);
+  }
 
 }
 

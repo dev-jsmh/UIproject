@@ -1,38 +1,60 @@
 <!-- en el contenedor dashboard se introducirán todas las visas que se relacionan con el inventario. 
         es dinamico y cambiará su contenido segun la vista -->
-        
-            <!-- boton de crear cliente -->
-            <a class="btn btn-success mt-2" routerLink="create">
-            <i class="bi bi-plus-circle"></i>
-             Añadir cliente</a>
-        
-            <app-client-search-form></app-client-search-form>
-        
-            <!-- clients container -->
-            <h1 class="mb-3 text-center">Clientes</h1>
-            <!-- barra separadora -->
-            <div style="height: 0.5rem;background-color:rgb(173, 173, 173);"></div>
-            <!-- List of clients -->
-            <app-clients-list></app-clients-list>
-            
-        <!-- ventana modal para validación de eliminar un registro -->
-        <div class="modal fade" id="modal_For_validate_delete" data-bs-backdrop="static">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">ventana de validación</h4>
-                        <!-- button for close modal windows -->
-                        <button class="btn btn-close" data-bs-dismiss="modal" aria-label="close"></button>
-                    </div>
-        
-                    <div class="modal-body">
-                        <p>Estas seguro que quieres realizar esta acción</p>
-                    </div>
-        
-                    <div class="modal-footer">
-                        <button class="btn btn-primary">Aceptar</button>
-                        <button class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+<!-- boton de crear cliente -->
+<a class="btn btn-success mt-2" routerLink="create">
+    <i class="bi bi-plus-circle"></i>
+    Añadir cliente</a>
+<!--barra de busqueda de registros-->
+<div class="row mt-4 justify-content-center mb-2">
+
+    <!-- busqueda clientes por parametros -->
+    <div class="col-12 col-md-5 d-flex mb-2">
+        <input class="form-control" type="text" id="search" placeholder="Nombre, Barrio, Apellido" #filter>
+        <button class="btn btn-success mx-2" type="button" (click)="onFilter(filter.value)"><i
+                class="bi bi-search"></i></button>
+    </div>
+</div>
+<!-- clients container -->
+<h1 class="mb-3 text-center">Clientes</h1>
+<!-- barra separadora -->
+<div style="height: 0.5rem;background-color:rgb(173, 173, 173);"></div>
+<!-- List of clients -->
+<div class="scrollable" style="height: 380px; overflow-y: scroll;">
+
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Cc</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Barrio</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let client of filteredClients">
+                <!-- ==================  Here go the clients  ============-->
+
+                <th scope="row">{{client?.id}}</th>
+                <td>{{client?.first_name}}</td>
+                <td>{{client?.first_lastname}}</td>
+                <td>{{client?.neighborhood?.name }}</td>
+                <td>
+                    <!-- client details boton -->
+                    <!-- pass the id of the client in to the route -->
+                    <a class="btn btn-info m-1" routerLink="{{client?.id}}/details"><i class="bi bi-eye"></i></a>
+                    <!--<a type="button" data-bs-toggle="modal" data-bs-target="#clientModal"><i class="bi bi-trash"></i></a>
+                   -->
+                </td>
+            </tr>
+            <!-- ==================  Here go the clients ============-->
+
+        </tbody>
+    </table>
+
+
+</div>
+<!-- ventana modal para validación de eliminar un registro -->
+
+<app-cliente-modal></app-cliente-modal>

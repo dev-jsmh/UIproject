@@ -6,6 +6,7 @@ import { ClientDashboardComponent } from './client-dashboard/client-dashboard.co
 import { ClientHomeComponent } from './client-home/client-home.component';
 import { CreateClientComponent } from './create-client/create-client.component';
 import { ClientModifyComponent } from './client-modify/client-modify.component';
+import { ClienteModalComponent } from './shared/cliente-modal/cliente-modal.component';
 
 
 
@@ -20,6 +21,7 @@ export const clientRoutes: Routes = [
       //{ path:'/modify', component: ClientDetailComponent},
       { path:':id/modify', component: ClientModifyComponent},
       { path: ':id/details', component: ClientDetailComponent },
+      {path:'client-modal', component: ClienteModalComponent }
 
     ]
   }

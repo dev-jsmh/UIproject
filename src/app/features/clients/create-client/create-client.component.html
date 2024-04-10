@@ -6,15 +6,15 @@
         <p>Verifique que los datos ingresados sean correctos antes de continuar</p>
     </div>
 </div>
+<app-back-button color="success" icon="bt bt-arrow-left" ></app-back-button>
 
 <!-- form to create clients -->
 <form [formGroup]="createClientForm" (submit)="onSubmit()">
     <div class="row mt-2">
-        <app-back-button></app-back-button>
         <div class="col-md-6 col-12">
             <div class="mb-3">
                 <label class="form-label" for="client_id_card">CC</label>
-                <input class="form-control" id="client_id_card" type="text" formControlName="dni">
+                <input class="form-control" id="client_id_card" type="text" formControlName="dni" maxlength="10" >
             </div>
             <div class="mb-3">
                 <label class="form-label" for="client_firstname">Primer nombre</label>
@@ -48,7 +48,7 @@
         <div class="col-md-6 col-12">
             <div class="mb-3">
                 <label class="form-label" for="client_phone">Teléfono</label>
-                <input class="form-control" id="client_phone" type="text" formControlName="phone">
+                <input class="form-control" id="client_phone" type="text" formControlName="phone" maxlength="10" >
                 <!-- alert if the phone is not filled-->
                 <div *ngIf="phone?.touched && phone?.invalid || (emptyOnSubmit && phone?.invalid ) " class="alert alert-warning fade show mt-3">
                     <p>Este campo es obligatorio</p>
@@ -84,6 +84,7 @@
     <!-- this part here has the submit button and the cancel button -->
     <div class="mb-3 text-center">
         <button class="btn btn-success m-1" type="submit">Añadir</button>
-        <app-back-button></app-back-button>
+        <a class="btn btn-danger m-1" routerLink="../" >Cancelar</a>
+
     </div>
 </form>

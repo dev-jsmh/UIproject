@@ -2,48 +2,55 @@
 
 <!-- Jhonatan samuel Martinez Hernandez -->
 <!-- form to modify clients -->
-<form [formGroup]="modifyClient" (submit) ="submitClient()" >
+<app-back-button></app-back-button>
+
+<form [formGroup]="modifyClient" (submit)="submitClient()" >
     <div class="row mt-2">
-        <app-back-button></app-back-button>
         <div class="col-md-6 col-12">
+            <div class="md-3">
+                <label class="form-label" for="id">Id:</label>
+                <input class="form-control" id="id" type="text" formControlName="id" >
+            </div>
             <div class="mb-3">
                 <label class="form-label" for="client_id_card">CC</label>
-                <input class="form-control" id="client_id_card" type="text" formControlName="clientIdCard">
+                <input class="form-control" id="client_id_card" type="text" formControlName="dni">
             </div>
             <div class="mb-3">
                 <label class="form-label" for="client_firstname">Primer nombre</label>
-                <input class="form-control" id="client_firstname" type="text" formControlName="clientFirstName">
+                <input class="form-control" id="client_firstname" type="text" formControlName="first_name">
             </div>
             <div class="mb-3">
                 <label class="form-label" for="client_secundtname">Segundo nombre</label>
-                <input class="form-control" id="client_secundtname" type="text" formControlName="clientSecundtName">
+                <input class="form-control" id="client_secundtname" type="text" formControlName="secund_name">
             </div>
             <div class="mb-3">
                 <label class="form-label" for="client_first_lastname">Primer apellido</label>
-                <input class="form-control" id="client_first_lastname" type="text" formControlName="clientFirstLastName">
+                <input class="form-control" id="client_first_lastname" type="text" formControlName="first_lastname">
             </div>
             <div class="mb-3">
                 <label class="form-label" for="client_secund_lastname">Segundo apellido</label>
-                <input class="form-control" id="client_secund_lastname" type="text" formControlName="clientSecundLastName">
+                <input class="form-control" id="client_secund_lastname" type="text" formControlName="secund_lastname">
 
             </div>
         </div>
         <div class="col-md-6 col-12">
             <div class="mb-3">
                 <label class="form-label" for="client_phone">Teléfono</label>
-                <input class="form-control" id="client_phone" type="text" formControlName="clientPhone">
+                <input class="form-control" id="client_phone" type="text" formControlName="phone">
             </div>
             <div class="mb-3">
                 <label class="form-label" for="client_address">Dirección</label>
-                <input class="form-control" id="client_address" type="text" formControlName="clientAddress">
+                <input class="form-control" id="client_address" type="text" formControlName="address">
             </div>
             <div class="mb-3">
                 <label class="form-label" for="client_neighborhood">Barrio</label>
-                <select class="form-select" id="client_neighborhood" formControlName="clientNeighborhood">
-                    <option selected></option>
-                    <option value="san fernando">San fernando</option>
-                    <option value="La central">La central</option>
-                    <option value="Los caracoles">Los caracoles</option>
+                <select class="form-select" id="client_neighborhood" formControlName="neighborhood">
+                    <!-- ========= set as default value the neighborhood assiged previously to the client ===== -->
+                   
+                    <option selected>{{desiredClient?.neighborhood?.name}}</option>
+                    <!-- ========= generate a list for the available neighborhoods -->
+                    <option *ngFor="let n of neighborhoods" value="{{n?.id}}" >{{n?.name}}</option>
+                   
                 </select>
             </div>
             <!-- this section here is for those cases when we need to add a client 
@@ -57,7 +64,9 @@
     </div>
     <!-- this part here has the submit button and the cancel button -->
     <div class="mb-3 text-center">
-        <button class="btn btn-success m-1" type="submit">Añadir</button>
-        <a class="btn btn-danger m-1" routerLink="../" >Cancelar</a>
+        <button class="btn btn-success m-1" type="submit">Aceptar</button>
+        <a class="btn btn-danger m-1" (click)="goBack()" >Cancelar</a>
     </div>
 </form>
+
+<!--<app-client-modify message=modalMessage [title]="'modalTitle'"></app-client-modify>-->
