@@ -1,7 +1,8 @@
 import { Injectable, } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ApiMainUrl } from '../features/apiConfig';
 import { ClientModel } from '../models/client-model';
+// ==== api url ====
+import { env  } from '../../env';
 
 
 @Injectable({
@@ -29,31 +30,31 @@ export class ClientService {
 
   getClientById(client_id: Number) {
     // make a get request to the clients enpoint with the id for specify the client we want
-    return this.http.get<ClientModel>(`${ApiMainUrl}/clients/${client_id}`);
+    return this.http.get<ClientModel>(`${env.apiUrl }/clients/${client_id}`);
 
   }
 
   //method that uses httpClient to consume api
   public getClients() {
-    return this.http.get(`${ApiMainUrl}/clients`);
+    return this.http.get(`${env.apiUrl}/clients`);
   }
 
   public postClient(newclient: ClientModel) {
-    return this.http.post<ClientModel>(`${ApiMainUrl}/clients`, newclient);
+    return this.http.post<ClientModel>(`${env.apiUrl}/clients`, newclient);
   }
 
   public deleteClient(clientId: Number) {
-    return this.http.delete(`${ApiMainUrl}/clients/${clientId}`);
+    return this.http.delete(`${env.apiUrl}/clients/${clientId}`);
   }
 
   public putClient(modClient: ClientModel, clientId: Number) {
-    return this.http.put<ClientModel>(`${ApiMainUrl}/clients/${clientId}`, modClient);
+    return this.http.put<ClientModel>(`${env.apiUrl}/clients/${clientId}`, modClient);
   }
 
   // assing existing neighborhood to new client
 
   public setClientNeigborhood(client_Id: Number, neighborhood_id: Number) {
-    this.http.put(`${ApiMainUrl}/clients/${client_Id}/assign-neighborhood/${neighborhood_id}`, null).subscribe({
+    this.http.put(`${env.apiUrl}/clients/${client_Id}/assign-neighborhood/${neighborhood_id}`, null).subscribe({
       next: (res: any) => {
         console.log("neighborhood assing to client successfully ", res);
 
@@ -71,7 +72,7 @@ export class ClientService {
   
   ---*/
 
-  public createClient(newClient: ClientModel, neighborhood_id: number) {
+  public createClient(newClient: any , neighborhood_id: number) {
 
     this.postClient(newClient).subscribe({
       next: (res: ClientModel) => {
@@ -90,7 +91,7 @@ export class ClientService {
   }
 
   // ===========================  Modify existing client's data =============================
-  public modifyClient(modClient: ClientModel, clientId: Number, neighborhood_id: number) {
+  public modifyClient(modClient: any, clientId: Number, neighborhood_id: number) {
     this.putClient(modClient,clientId).subscribe(
       {
         next: (res: any) => {

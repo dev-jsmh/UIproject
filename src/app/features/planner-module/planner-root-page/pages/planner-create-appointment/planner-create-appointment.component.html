@@ -1,0 +1,189 @@
+<nav class="navbar navbar-expand-md bg-dark sticky-top" data-bs-theme="dark">
+    <div class="container-fluid">
+
+        <a class="navbar-brand" routerLink="../../">
+            <i class="bi bi-arrow-left" style="color: white; font-size: 2rem;"></i>
+        </a>
+        <div>
+            <a class="navbar-brand" href="#">Agendar Servicio</a>
+        </div>
+
+    </div>
+</nav>
+<div class="container">
+    <form [formGroup]="appointmentForm" class="form-group">
+        <div class="row mt-5">
+            <div class="col-6">
+                <!-- <div class="mb-3">
+                    <label for="">selecionar servicio</label>
+                    <select class="form-control" type="text">
+                        <option selected value="">---</option>
+                        <option value="">Mantenimiento</option>
+                        <option value="">Reparación de equipo</option>
+                    </select>
+                </div>
+            -->
+                <div class="mb-3">
+                    <label for="">Nombre servicio</label>
+                    <input class="form-control" type="text">
+                </div>
+                <div class="mb-3">
+                    <label for="">Valor</label>
+                    <input formControlName="estimatedValue" class="form-control" type="number" placeholder="$$$$$">
+                </div>
+                <div class="mb-3">
+                    <label for="">Descripción</label>
+                    <textarea formControlName="description" class="form-control" type="text"
+                        placeholder="detalles del servicio a prestar"></textarea>
+                </div>
+
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="date_of_appointment">Fecha de la cita</label>
+                    <input formControlName="date" id="date_of_appointment" class="form-control" type="date">
+                </div>
+                <!-- available hours for the selected day 
+                <div class="mb-3">
+                   <label for="">horas disponibles</label>
+                    <div class="hours">
+                        <div class="scrollable" style="height: 200px; overflow-y: scroll;">
+                            <ul>
+                                <li>06:00am</li>
+                                <li>07:00am</li>
+                                <li>08:00am</li>
+                                <li>09:00am</li>
+                                <li>10:00am</li>
+                                <li>11:00am</li>
+                                <li>02:00am</li>
+                                <li>03:00am</li>
+                            </ul>
+                        </div>
+                    </div> 
+                </div>
+                
+                -->
+                <div class="mb-3">
+                    <label for="time_of_appointment">Hora de la cita</label>
+                    <input formControlName="hour" id="time_of_appointment" class="form-control" type="time">
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+<!--  -->
+<div class="mb-3 text-center">
+    <!-- accion modal de cancelar -->
+    <a class="btn btn-danger" routerLink="../../">Cancelar</a>
+
+    <!-- accion modal de agendar -->
+    <button class="btn btn-success m-2" type="button" data-bs-toggle="modal"
+        data-bs-target="#modal_confirm__appointment_details">
+        continuar
+    </button>
+</div>
+
+<!-- modal confirm appointment details -->
+<div class="modal fade" id="modal_confirm__appointment_details">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title">Confirmar detalles del servicio</h1>
+                <button class="btn btn-close" type="button" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form action="" class="form-group">
+                    <div class="row">
+                        <!-- details of client -->
+                        <div class="col-12 col-md-4">
+                            <div class="mb-3">
+                                <p>Id: {{id}}</p>
+                            </div>
+                            <div class="mb-3">
+                                <p>cc: {{client?.dni}}</p>
+                            </div>
+                            <div class="mb-3">
+                                <p>Nombre completo: {{client?.names }} {{client?.lastNames}}</p>
+                            </div>
+                            <div class="mb-3">
+                                <p>Telefono {{ client?.phone}}</p>
+                            </div>
+                            <div class="mb-3">
+                                <p>Barrio: {{ client?.neighborhood?.name}}</p>
+                            </div>
+                            <div class="mb-3">
+                                <p>Dirección: {{client?.address}}</p>
+                            </div>
+
+                        </div>
+                        <!-- details of appointment-->
+                        <div class="col-12 col-md-4">
+
+                            <div class="mb-3">
+                                <p>N° del servicio: service_id</p>
+                            </div>
+                            <div class="mb-3">
+                                <p>Fecha de la cita: {{ date }}</p>
+                            </div>
+                            <!-- hour for the selected day -->
+                            <div class="mb-3">
+                                <p>Hora: {{ hour }} </p>
+                            </div>
+
+                            <div class="mb-3">
+                                <p>Valor estimado: {{ value}} </p>
+                            </div>
+                        </div>
+                        <!-- details of offered service -->
+                        <div class="col-12 col-md-4">
+                            <div class="mb-3">
+                                <h5>Descripción</h5>
+                                <p> {{ description }}</p>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 text-center">
+                            <a class="btn btn-danger" type="button" data-bs-target="#modal_confirm__appointment_details"
+                                data-bs-toggle="modal" data-bs-dismiss="modal">volver</a>
+
+                            <button class="btn btn-success" (click)=onSubmit() type="button" data-bs-target="#modal_confirm_save"
+                                data-bs-toggle="modal" data-bs-dismiss="modal">confirmar</button>
+
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal use for send a message to user in order 
+to let him know that the data has been save in the database -->
+<div class="modal fade" id="modal_confirm_save">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title"></h1>
+                <button class="btn btn-close" type="button" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container text-center">
+                    <p>
+                        El servicio ha sido agendado correctamente
+                    </p>
+                    <i class="bi bi-check" style="font-size: 10rem; font-weight:4rem"></i>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col text-center">
+                    <a class="btn btn-success" routerLink="../../" data-bs-dismiss="modal">Aceptar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

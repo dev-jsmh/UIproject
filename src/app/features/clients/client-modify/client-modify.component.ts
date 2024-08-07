@@ -59,10 +59,8 @@ export class ClientModifyComponent {
           {
             id: [this.desiredClient?.id],
             dni: [this.desiredClient?.dni],
-            first_name: [this.desiredClient?.first_name, Validators.required],
-            secund_name: [this.desiredClient?.secund_name],
-            first_lastname: [this.desiredClient?.first_lastname, Validators.required],
-            secund_lastname: [this.desiredClient?.secund_lastname],
+            names: [this.desiredClient?.names, Validators.required],
+            lastNames: [this.desiredClient?.lastNames],
             phone: [this.desiredClient?.phone, Validators.required],
             address: [this.desiredClient?.address],
             neighborhood: [this.desiredClient?.neighborhood?.id, Validators.required],
@@ -109,15 +107,13 @@ export class ClientModifyComponent {
     // extract values from each required control of the form;
     let id = Number(this.modifyClient.get('id')?.value);
     let dni = Number(this.modifyClient.get('dni')?.value);
-    let first_name = this.modifyClient.get('first_name')?.value;
-    let secund_name = this.modifyClient.get('secund_name')?.value;
-    let first_lastname = this.modifyClient.get('first_lastname')?.value;
-    let secund_lastname = this.modifyClient.get('secund_lastname')?.value;
+    let names = this.modifyClient.get('names')?.value;
+    let lastNames = this.modifyClient.get('lastNames')?.value;
     let phone = this.modifyClient.get('phone')?.value;
     let address = this.modifyClient.get('address')?.value;
     let neighborhood_id = Number(this.modifyClient.get('neighborhood')?.value);
     // create new instance of client and assign the extracted values
-    const modclient = new ClientModel(dni!, first_name!, secund_name!, first_lastname!, secund_lastname!, phone!, address!);
+    const modclient = { dni, names, lastNames, phone, address };
 
     // make put request to clients enpoint 
     this.clientService.modifyClient(modclient, this.clientId , neighborhood_id);

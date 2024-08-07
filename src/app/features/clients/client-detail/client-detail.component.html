@@ -11,11 +11,11 @@
         <div class="col-12 col-md-9 px-2 mb-3">
             <div class="row">
                 <div class="mb-3">
-                    id: {{client?.id}}
+                    id: {{clientId}}
                 </div>
                 <div class="mb-1">
                     <p>
-                        Nombre: {{client?.first_name}} {{client?.secund_name}} {{client?.first_lastname}} {{client?.secund_lastname}}
+                        Nombre: {{client?.names}} {{client?.lastNames}}
                     </p>
                 </div>
                 <div class="mb-3">
@@ -28,7 +28,24 @@
                     Barrio: {{client?.neighborhood?.name}}
                 </div>
                 <div class="mb-3">
-                    Fecha proximo mantenimiento: {{client?.last_meet}}
+                    Fecha ultimo mantenimiento:
+                    <p *ngIf="client?.lastMaintenance !== null">
+                        {{client?.lastMaintenance}}
+                    </p>
+                    <p style="color:red" *ngIf="client?.lastMaintenance === null">
+                        Nunca ha sido atendido
+                    </p>
+                </div>
+                <div class="mb-3">
+                    Fecha proximo mantenimiento: 
+                    <!-- conditional to validate if client has been schedule for any date to be serve -->
+                    <p *ngIf="client?.nextMaintenance !== null">
+                        {{client?.nextMaintenance}}
+                    </p>
+                    <!-- if client has no service schedule for the future render a differente message -->
+                    <p style="color:red" *ngIf="client?.nextMaintenance === null">
+                        No hay fecha registrada
+                    </p>
                 </div>
                 <div class="mb-3">
                     <button class="btn btn-danger m-1" (click)="deleteClient(client!.id)">
@@ -93,3 +110,6 @@
         </div>
 
     </div>
+</div>
+
+<!-- Modal to confir client deletiticon -->

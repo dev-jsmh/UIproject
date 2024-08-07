@@ -1,0 +1,61 @@
+<h3 class="mt-4 text-center">Servicios Agendados</h3>
+        <div class="row justify-content-center">
+
+            <!-- rapid search bar -->
+            <div class="col-12 col-md-5 d-flex mb-2 px-2">
+                <input class="form-control" type="text" id="search" placeholder="Nombre, Barrio, Apellido">
+                <button class="btn btn-success mx-2" type="submit"><i class="bi bi-search"></i></button>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- services appointment card -->
+          <div *ngFor="let appointment of appointmentsInProgress" class="col-sm-12 col-md-4 col-lg-3 p-2">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <p class="card-text">
+                                Nombre: {{ appointment?.clientFullName}}
+                            </p>
+                          
+                            <p class="card-text">
+                                Barrio: {{ appointment?.neighborhood}}
+                            </p>
+                        </div>
+                        <div class="col">
+                            <p class="card-text">
+                                Fecha: {{ appointment?.date}}
+                            </p>
+                            <p class="card-text">
+                                Hora: {{ appointment?.hour}}
+                            </p>
+                            
+
+                        </div>
+                        <div class="col-12 text-center">
+                            <div class="mb-3">
+                                <h4 class="card-title">Acciones</h4>
+                                <a class="btn btn-info mb-2" routerLink="{{1}}/details">Detalles</a>
+                                <a class="btn btn-success mb-2" routerLink="{{1}}/modify">Aplazar</a>
+                                <button class="btn btn-danger mb-2" data-bs-target="#modal_cancel_appointment"
+                                    data-bs-toggle="modal">cancelar</button>
+                                <button class="btn btn-success mb-2" data-bs-target="#modal_appointment_state"
+                                    data-bs-toggle="modal">Estado</button>
+                            </div>
+                            <div class="mb-3">
+                                <p class="card-text">Estado</p>
+                                <h4 class="card-title">Por Atención</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+          </div>
+            
+            <!-- services appointment card -->
+            
+        </div>
+        <!-- Jhonatan samuel Martinez Hernandez -->
+        <!-- Software Analysis and Development -->

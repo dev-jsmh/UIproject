@@ -6,41 +6,17 @@ export class ClientModel {
 
      id!: Number;
      dni!: Number;
-     first_name!: String;
-     secund_name!: String;
-     first_lastname!: String;
-     secund_lastname!: String;
+     names!: String;
+     lastNames!: String;
      phone!: String;
      address!: String;
      neighborhood!: NeighborhoodModel;
-     last_meet!: String;
+     lastMaintenance!: String;
+     nextMaintenance!: String;
+     hasBeenServed!: Boolean;
      image!: String;
      purchased_services!: ServiceModel[];
      products!: ProductModel[];
 
-    // Empty constructor
-   
-    // constructor with basic client contact data
-    public constructor(
-        dni:Number,
-        first_name: String,
-        secund_name: String,
-        first_lastname: String,
-        secund_lastname: String,
-        phone: String,
-        address: String,
-      
-
-        ){
-        this.dni = dni;
-        this.first_name = first_name;
-        this.secund_name = secund_name;
-        this.first_lastname = first_lastname;
-        this.secund_lastname = secund_lastname;
-        this.phone = phone;
-        this.address = address;
-  
-
-    }
 }
 

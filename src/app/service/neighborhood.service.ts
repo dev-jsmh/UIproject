@@ -26,12 +26,12 @@ export class NeighborhoodService {
 
   // returns an array with all existing neighborhood 
   getAllNeighborhoods(){
-    return this.http.get(`${env.ApiMainUrl }/neighborhoods`)
+    return this.http.get(`${env.apiUrl }/neighborhoods`)
   }
 
   // returns a specific neighborhood by its id 
   getNeighborhoodById(id: Number){
-    return this.http.get(`${env.ApiMainUrl }/neighborhoods/${id}`);
+    return this.http.get(`${env.apiUrl }/neighborhoods/${id}`);
   }
 
 }

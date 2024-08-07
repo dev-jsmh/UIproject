@@ -4,8 +4,10 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { ClienteModalComponent } from '../shared/cliente-modal/cliente-modal.component';
 import { ClientModel } from '../../../models/client-model';
 import { ClientService } from '../../../service/client.service';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 
+// ==== spinner ====
+import { SpinnerComponent } from '../../../core/spinner/spinner.component';
 
 @Component({
   selector: 'app-client-home',
@@ -14,8 +16,10 @@ import { NgFor } from '@angular/common';
     RouterOutlet,
     RouterLink,
     NgFor,
+    NgIf,
     NavigationBarClientsComponent,
-    ClienteModalComponent
+    ClienteModalComponent,
+    SpinnerComponent
   ],
   templateUrl: './client-home.component.html',
   styleUrl: './client-home.component.css'
@@ -36,8 +40,8 @@ export class ClientHomeComponent {
   constructor(private clientService: ClientService) {
 
     this.loadClients();
-    
-   }
+
+  }
 
 
   // make get request to api endpoint and loads the existing clients from data base
@@ -68,18 +72,20 @@ export class ClientHomeComponent {
     );
   }
 
+
   onFilter(value: String) {
     if (!value) {
       this.filteredClients = this.clients;
     }
     else {
-      this.filteredClients = this.clients.filter(
-        client => client?.first_name
-        .toLowerCase()
-        .includes(value.toLowerCase())
-        );
-    }
+     this.filteredClients = this.clients.filter(
+        client => {
+          client?.names
+            .toLowerCase()
+            .includes(value.toLowerCase())
 
+        });
+       }
 
   }
 

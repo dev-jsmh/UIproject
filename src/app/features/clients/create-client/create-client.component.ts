@@ -57,10 +57,8 @@ export class CreateClientComponent {
   createClientForm = this.fb.group(
     {
       dni: [''],
-      first_name: ['', Validators.required],
-      secund_name: [''],
-      first_lastname: ['', Validators.required],
-      secund_lastname: [''],
+      names: ['', Validators.required],
+      last_names: ['', Validators.required],
       phone: ['', Validators.required],
       address: [''],
       neighborhood: ['', Validators.required]
@@ -72,8 +70,7 @@ export class CreateClientComponent {
 
     // verify if the minimun required data is filled
     if (
-      this.createClientForm.controls.first_name.invalid ||
-      this.createClientForm.controls.first_lastname.invalid ||
+      this.createClientForm.controls.names.invalid ||
       this.createClientForm.controls.phone.invalid ||
       this.createClientForm.controls.neighborhood.invalid
 
@@ -86,16 +83,14 @@ export class CreateClientComponent {
     } else {
       // == extranting all client data from each Control of the form
     let dni = Number(this.createClientForm.get('dni')?.value);
-      let first_name = this.createClientForm.get('first_name')?.value;
-      let secund_name = this.createClientForm.get('secund_name')?.value;
-      let first_lastname = this.createClientForm.get('first_lastname')?.value;
-      let secund_lastname = this.createClientForm.get('secund_lastname')?.value;
+      let names = this.createClientForm.get('names')?.value;
+      let last_names = this.createClientForm.get('last_names')?.value;
       let phone = this.createClientForm.get('phone')?.value;
       let address = this.createClientForm.get('address')?.value;
       // extranting the id of neighborhood
       let neighborhood_id = Number(this.createClientForm.value.neighborhood);
       // create a new client object with the values that have beeen gotten from the form 
-      const newClient = new ClientModel(dni!, first_name!, secund_name!, first_lastname!, secund_lastname!, phone!, address!);
+      const newClient = { dni, names, last_names, phone, address};
 
       this.clientService.createClient(newClient, neighborhood_id);
       // reset the form 
@@ -109,12 +104,12 @@ export class CreateClientComponent {
 
   // getters for each required control inside of the form
 
-  public get first_name() {
-    return this.createClientForm.get('first_name');
+  public get names() {
+    return this.createClientForm.get('names');
   }
 
-  get first_lastname() {
-    return this.createClientForm.get('first_lastname');
+  get last_names() {
+    return this.createClientForm.get('last_names');
   }
 
   get phone() {

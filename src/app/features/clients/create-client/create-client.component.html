@@ -17,32 +17,18 @@
                 <input class="form-control" id="client_id_card" type="text" formControlName="dni" maxlength="10" >
             </div>
             <div class="mb-3">
-                <label class="form-label" for="client_firstname">Primer nombre</label>
-                <input class="form-control" id="client_firstname" type="text" formControlName="first_name" registered>
+                <label class="form-label" for="client_firstname">Nombres</label>
+                <input class="form-control" id="client_firstname" type="text" formControlName="names" registered>
                 <!-- alert if the name is not filled -->
-                <div *ngIf=" first_name?.touched && first_name?.invalid || ( emptyOnSubmit && first_name?.invalid ) " class="alert alert-warning fade show mt-3">
+                <div *ngIf=" names?.touched && names?.invalid || ( emptyOnSubmit && names?.invalid ) " class="alert alert-warning fade show mt-3">
                     <p>Este campo es obligatorio</p>
                 </div>
 
             </div>
+           
             <div class="mb-3">
-                <label class="form-label" for="client_secundtname">Segundo nombre</label>
-                <input class="form-control" id="client_secundtname" type="text" formControlName="secund_name">
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="client_first_lastname">Primer apellido</label>
-                <input class="form-control" id="client_first_lastname" type="text" formControlName="first_lastname">
-
-                <!-- alert if the first last name is not filled -->
-                <div *ngIf=" first_lastname?.touched && first_lastname?.invalid || (emptyOnSubmit && first_lastname?.invalid) "
-                    class="alert alert-warning fade show mt-3">
-                    <p>Este campo es obligatorio</p>
-                </div>
-
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="client_secund_lastname">Segundo apellido</label>
-                <input class="form-control" id="client_secund_lastname" type="text" formControlName="secund_lastname">
+                <label class="form-label" for="client_secund_lastname">Apellidos</label>
+                <input class="form-control" id="client_secund_lastname" type="text" formControlName="last_names">
             </div>
         </div>
         <div class="col-md-6 col-12">

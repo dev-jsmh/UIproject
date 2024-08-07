@@ -9,6 +9,7 @@ import { BackButtonComponent } from '../shared/back-button/back-button.component
 import { Location, NgFor, NgIf } from '@angular/common';
 import { ClientModel } from '../../../models/client-model';
 
+
 @Component({
   selector: 'app-client-detail',
   standalone: true,
@@ -31,6 +32,9 @@ export class ClientDetailComponent {
   clientHasServices: Boolean | undefined;
   clientHasProducts: Boolean | undefined;
 
+  // get the client id from url params
+  clientId = parseInt(this.route.snapshot.params['id']);
+
 
   constructor(
     private clientService: ClientService,
@@ -42,11 +46,10 @@ export class ClientDetailComponent {
     /* find the client on the list 
     and assign it to the client variable
     */
-    const clientId = parseInt(this.route.snapshot.params['id']);
 
     try {
       // makes an http get request and return the desired client
-      this.clientService.getClientById(clientId).subscribe(client => {
+      this.clientService.getClientById(this.clientId).subscribe(client => {
         /// prints the result in the console
         console.log("client full data ", client);
         // assign the result to the client properti of this component
