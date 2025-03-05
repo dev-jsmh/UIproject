@@ -16,11 +16,11 @@
                     <div class="row">
                         <div class="col">
                             <p class="card-text">
-                                Nombre: {{ appointment?.clientFullName}}
+                                Nombre: {{ appointment?.client?.names}}
                             </p>
                           
                             <p class="card-text">
-                                Barrio: {{ appointment?.neighborhood}}
+                                Barrio: {{ appointment?.client?.neighborhood?.name }}
                             </p>
                         </div>
                         <div class="col">

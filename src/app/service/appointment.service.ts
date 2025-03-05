@@ -13,6 +13,6 @@ export class AppointmentService {
 
     //method that uses httpClient to consume api
     public getAppointments() {
-      return this.http.get(`${env.apiUrl}/services`);
+      return this.http.get(`${env.apiUrl}/appointments`);
     }
 }

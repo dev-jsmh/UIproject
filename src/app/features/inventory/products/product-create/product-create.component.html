@@ -1,1 +1,77 @@
-<p>product-create works!</p>
+<!-- 
+jhonatan samuel martinez hernandez 
+software analyts and developer
+year 2024 
+-->
+
+<div class="container-fluid">
+    <a routerLink="../">
+        <i class="bi-arrow-left" style="font-size: 1.5rem;font-weight: bold; color: #000;"></i>
+    </a>
+
+    <div class="container mt-3">
+        <h5 class="mb-3">Crear nuevo producto</h5>
+
+        <form class="form-group px-3">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="mb-3">
+                        <label class="form-label" for="product_code">Codigo producto</label>
+                        <input class="form-control" id="product_code" type="number">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="product_name">Nombre</label>
+                        <input class="form-control" id="product_name" type="text">
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="col-5 mb-3">
+                            <label class="form-label" for="">Modelo</label>
+                            <input class="form-control" id="" type="text">
+                        </div>
+                        <div class="col-5 mb-3">
+                            <label class="form-label" for="">Cantidad inicial</label>
+                            <input class="form-control" id="" type="number">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <!--category of product -->
+                    <div class="d-flex justify-content-between">
+                        <div class="col-5 mb-3">
+                            <label class="form-label" for="product_category">Categoria</label>
+                            <select class="form-control" id="product_category" type="text">
+                                <option>Planta de agua</option>
+                                <option>Cartuchos</option>
+                                <option>Botones</option>
+                                <option>Cables</option>
+                            </select>
+                        </div>
+                        <div class="col-5 mb-3">
+                            <label class="form-label" for="product_category_id">Id categoria</label>
+                            <input class="form-control" id="product_category_id" type="text">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="">Descripción</label>
+                        <textarea class="form-control" id=""></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="">imagen</label>
+                        <input class="form-control" id="" type="file">
+                    </div>
+                    <div class="mb-3">
+                        <img src="../../src/images/WhatsApp Image 2022-09-07 at 11.54.51 AM (1).jpeg" alt=""
+                            style="height: 5rem">
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3 text-center">
+                <button class="btn btn-success" type="submit">Añadir</button>
+                <a class="btn btn-danger" routerLink="../">Cancelar</a>
+            </div>
+        </form>
+
+    </div>
+
+</div>

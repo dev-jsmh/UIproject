@@ -1,0 +1,51 @@
+<div class="container">
+
+    <!-- boton de crear registros -->
+    <a class="btn btn-primary m-2" routerLink="create"><i class="bi bi-plus-circle"></i> Anadir proveedor</a>
+
+
+    <!-- Jhonatan Samuel Martinez Hernandez -->
+    <!-- rapid search bar -->
+    <div class="col-12 d-flex mb-2 mt-3 px-2">
+        <input class="form-control" type="text" placeholder="Nombre, Barrio, Apellido">
+        <button class="btn btn-success mx-2" type="submit"><i class="bi bi-search"></i></button>
+    </div>
+    <!-- lista de proveedores -->
+    <h3 class="my-3">Lista de proveedores</h3>
+
+    <!-- providers list -->
+    <div class="scrollable mb-4" style="height: 500px; overflow-y: scroll;">
+
+        <div *ngIf="providers.length == 0">
+            <div class="card mb-2">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6 col-md-4 mb-2">
+                            <p>Id:<span id="providerId">1302392</span></p>
+                            <p>Telefono:<span id="providerPhone">65874857</span></p>
+                        </div>
+                        <div class="col-6 col-md-4 mb-2">
+                            <p>Nombre: <span id="providerName">Filtros dennis</span></p>
+                            <p>Dirección: <span id="providerAddress">Barrio las gaviotas</span></p>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="text-center">
+    
+                                <!-- modal triger example-->
+                                <button class="btn btn-primary m-2" data-bs-toggle="modal"
+                                    data-bs-target="#modalForValidateDelete">Eliminar</button>
+                                <a class="btn btn-primary m-2" routerLink="1/update">Modificar</a>
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!--- spinner --->
+        <div class="text-center p-5" *ngIf="providers.length > 0">
+            <app-spinner></app-spinner>
+        </div>
+    </div>
+</div>

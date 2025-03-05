@@ -1,0 +1,136 @@
+
+<!--
+    Jhonatan Samuel Martinez Hernandez
+    software analyts and developer
+    year 2024
+-->
+
+<div class="container-fluid">
+    <a routerLink="../">
+        <i class="bi-arrow-left" style="font-size: 30px; font-weight: bold; color: #000"></i>
+    </a>
+</div>
+
+<div class="container">
+
+    <h3 class="my-3">Crear Novedad</h3>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <div class="mb-3">
+                <label class="form-label" for="id-record">ID</label>
+                <input class="form-control" id="id-record" type="number" placeholder="15">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="recordDate">Fecha</label>
+                <input class="form-control" id="recordDate" type="datetime-local" placeholder="26 abril 2023">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="recordCategory">Categoria</label>
+                <select class="form-select" id="recordCategory">
+                    <option selected>Categoria</option>
+                    <option value="1">Egreso</option>
+                    <option value="2">Ingreso</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="recordDescription" class="form-label"></label>Descripción
+                <textarea class="form-control" id="recordDescription" rows="3"
+                    placeholder="Ej. puede escribir que el motivo del egreso fue una venta realizada a un nuevo cliente"
+                    style="height: 100px; overflow-y: scroll;">
+                </textarea>
+            </div>
+            <!-- concepto del registro -->
+            <div class="mb-3">
+                <label class="form-label" for="recordCategory">Concepto o Razon</label>
+                <select class="form-select" id="recordCategory">
+                    <option selected>Garantia</option>
+                    <option value="1">Devolución</option>
+                    <option value="2"></option>
+                </select>
+            </div>
+            <!-- price adjustment and totals -->
+            <div class="mb-3">
+                <label for="">Subtotal</label>
+              <p>195.000</p>
+
+            </div>
+            <div class="mb-3">
+                <label for="">Descuento</label>
+                <p>12.000</p>
+            </div>
+            <!-- total for pay -->
+            <div class="mb-3">
+                <label for="">Total Por Pagar</label>
+                <p>183.000</p>
+            </div>
+          
+        </div>
+        <div class="col-sm-12 col-md-6 mt-4">
+            <!-- botton for select products -->
+            <div class="mb-3">
+                <button class="btn btn-success" data-bs-target="#modal_invoce_add_products" data-bs-toggle="modal">
+                    selectionar Productos
+                </button>
+            </div>
+            <!-- lista de productos -->
+            <h4>Productos requeridos</h4>
+            <div class="mb-3" style="height: 330px; overflow-y: scroll;">
+                <ul>
+                    <li>
+                        <div class="d-flex p-2">
+                            <label>P001 - planta puficador agua $150.00 </label>
+                            <button class="btn btn-danger mx-1">
+                                <i class="bi bi-dash-circle"></i>
+                            </button>
+                            <button class="btn btn-success mx-1">
+                                <i class="bi bi-plus-circle"></i>
+                            </button>
+                            <div class="col-2 mx-1">
+                                <input class="form-control" type="number">
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="d-flex p-2">
+                            <label>P001 - planta puficador agua $150.00 </label>
+                            <button class="btn btn-danger mx-1"><i class="bi bi-dash-circle"></i></button>
+                            <button class="btn btn-success mx-1"><i class="bi bi-plus-circle"></i>
+                            </button>
+                            <div class="col-2 mx-1">
+                                <input class="form-control" type="number">
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="d-flex p-2">
+                            <label>P001 - planta puficador agua $150.00 </label>
+                            <button class="btn btn-danger mx-1"><i class="bi bi-dash-circle"></i></button>
+                            <button class="btn btn-success mx-1"><i class="bi bi-plus-circle"></i></button>
+                            <div class="col-2 mx-1">
+                                <input class="form-control" type="number">
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="d-flex p-2">
+                            <label>P001 - planta puficador agua $150.00 </label>
+                            <button class="btn btn-danger mx-1"><i class="bi bi-dash-circle"></i></button>
+                            <button class="btn btn-success mx-1"><i class="bi bi-plus-circle"></i></button>
+                            <div class="col-2 mx-1">
+                                <input class="form-control" type="number">
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    
+    </div>
+    <div class="col-12 mb-4 text-center">
+        <button class="btn btn-primary">Registrar</button>
+        <a class="btn btn-success" routerLink="../">Cancelar</a>
+    </div>
+</div>

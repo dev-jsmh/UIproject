@@ -1,1 +1,118 @@
-<p>product-details works!</p>
+<div class="container-fluid">
+
+    <a routerLink="../../">
+        <i class="bi-arrow-left" style="font-size: 1.5rem;font-weight: bold; color: #000;"></i>
+    </a>
+</div>
+
+<div class="container">
+    <h5 style="margin-top: 1rem">
+        Detalles del producto
+    </h5>
+
+    <div class="row mt-4">
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-2 p-2">
+            <img class="col-12" src="../../src/images/WhatsApp Image 2022-09-07 at 11.54.51 AM (1).jpeg"
+                style="height: 18rem; border-radius: 0.5rem;" alt="purificador de aguas">
+            <div class="mt-2 text-center">
+                <!-- compra de producto -->
+                <button class="btn btn-success mx-2" data-bs-toggle="modal" data-bs-target="#modal_add_stock"
+                    data-bs-dismiss="modal">
+                    <i class="bi bi-plus-circle"></i>
+                    comprar
+                </button>
+                <!-- modificar producto -->
+                <a class="btn btn-success m-2" type="button" routerLink="/inventory/products/1/update">
+                    <i class="bi bi-save"></i>Modificar
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="mt-2 mb-3">
+                <p>Codigo producto: 18323</p>
+            </div>
+            <div class="mb-3">
+                <p>Nombre: Purificador de agua</p>
+            </div>
+            <div class="mb-3">
+                <p>Valor de compra: 150.000</p>
+            </div>
+            <div class="mb-3">
+                <p>Unidades disponibles:12</p>
+            </div>
+            <div class="mb-3">
+                <p>Modelo: Manzana verde</p>
+            </div>
+            <div class="col mb-3">
+                <p>Categoria: Planta Purificadora</p>
+            </div>
+            <div class="col mb-3">
+                <p>id categoria: 2</p>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-4">
+
+        <p>Purificador de agua con ozono, modelo manzana verde,
+            esta fabricado en material de acrilico resistente a
+            la corroción y duradero en el tiempo. calidad 100% y
+            mas asequible que otros modelos que tenemos disponibles</p>
+
+    </div>
+</div>
+
+<!-- modal for add stock -->
+<div class="modal fade" id="modal_add_stock" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">compra de stock</h4>
+                <!-- button for close modal windows -->
+                <button class="btn btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form action="" class="form-group">
+                    <div class="row">
+
+                        <div class="mb-3">
+                            <label class="form-label" for="product_provider_id">Id proveedor</label>
+                            <select class="form-control" id="product_provider_id" type="number">
+                                <option selected>---</option>
+                                <option>1234</option>
+                                <option>3635</option>
+                                <option>333333</option>
+                                <option>444444</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="product_provider_name">Nombre
+                                proveedor</label>
+                            <select class="form-control" id="product_provider_name" type="text">
+                                <option selected>---</option>
+
+                                <option>juan camilo</option>
+                                <option>Roberto Enrique</option>
+                                <option>Luis mario</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="product_category_id">Cantidad</label>
+                            <input class="form-control" id="product_category_id" type="number">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="">Valor de compra</label>
+                            <input class="form-control" id="" type="text">
+                        </div>
+                    </div>
+                    <div class="mb-3 text-center">
+                        <button class="btn btn-success" type="submit">comprar</button>
+                        <a class="btn btn-danger" href="">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

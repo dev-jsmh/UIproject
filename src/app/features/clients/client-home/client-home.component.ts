@@ -32,6 +32,8 @@ export class ClientHomeComponent {
   // an array for store the filtered clients
   filteredClients: ClientModel[] = [];
 
+  public isLoaded: Boolean = false;
+
   /**
    * Inject the clientService class as a dependency
    * for the clients component
@@ -51,9 +53,11 @@ export class ClientHomeComponent {
         this.clients = res;
         console.log(res);
         this.filteredClients = this.clients;
+        this.isLoaded = true;
       },
       error: (error) => {
         console.log("Error al optener los clientes de la api. ", error);
+        this.isLoaded = false;
       }
     });
   }

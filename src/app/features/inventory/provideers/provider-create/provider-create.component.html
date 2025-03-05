@@ -1,0 +1,36 @@
+
+<div class="container-fluid">
+    <a routerLink="../">
+        <i class="bi-arrow-left" style="font-size: 30px; color: #000; font-weight: bold;"></i>
+    </a>
+</div>
+
+<div class="container">
+
+   <h5>Añadir Proveedor</h5>
+
+    <!-- formulario de datos para proveedores -->
+    <form>
+        <div class="mb-3">
+            <label class="form-label" for="providerName">Nombre del proveedor</label>
+            <input class="form-control" id="providerName" type="text" >
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="providerAddress">Dirección</label>
+            <input class="form-control" id="providerAddress" type="text" >
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="providerNeighborhood">Barrio</label>
+            <input class="form-control" id="providerNeighborhood" type="text" >
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="providerPhone">Telefono</label>
+            <input class="form-control" id="providerPhone" type="text" >
+        </div>
+
+        <div class="mb-3 text-center">
+            <button class="btn btn-primary">Añadir</button>
+            <a class="btn btn-danger" routerLink="../">Cancelar</a>
+        </div>
+    </form>
+</div>

@@ -58,7 +58,7 @@ export class CreateClientComponent {
     {
       dni: [''],
       names: ['', Validators.required],
-      last_names: ['', Validators.required],
+      lastNames: ['', Validators.required],
       phone: ['', Validators.required],
       address: [''],
       neighborhood: ['', Validators.required]
@@ -84,13 +84,13 @@ export class CreateClientComponent {
       // == extranting all client data from each Control of the form
     let dni = Number(this.createClientForm.get('dni')?.value);
       let names = this.createClientForm.get('names')?.value;
-      let last_names = this.createClientForm.get('last_names')?.value;
+      let lastNames = this.createClientForm.get('lastNames')?.value;
       let phone = this.createClientForm.get('phone')?.value;
       let address = this.createClientForm.get('address')?.value;
       // extranting the id of neighborhood
       let neighborhood_id = Number(this.createClientForm.value.neighborhood);
       // create a new client object with the values that have beeen gotten from the form 
-      const newClient = { dni, names, last_names, phone, address};
+      const newClient = { dni, names, lastNames, phone, address};
 
       this.clientService.createClient(newClient, neighborhood_id);
       // reset the form 
@@ -108,7 +108,7 @@ export class CreateClientComponent {
     return this.createClientForm.get('names');
   }
 
-  get last_names() {
+  get lastNames() {
     return this.createClientForm.get('last_names');
   }
 

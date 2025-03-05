@@ -57,5 +57,8 @@
         <app-spinner></app-spinner>
     </div>
 
+    <div *ngIf="clients.length == 0 && isLoaded">
+        ! No existen clientes en la base de datos !
+    </div>
 
 </div>

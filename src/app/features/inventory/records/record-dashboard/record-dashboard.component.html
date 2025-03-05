@@ -1,0 +1,67 @@
+<!--
+    Jhonatan Samuel Martinez Hernandez
+    software analyts and developer
+    year 2024
+-->
+
+<div class="container">
+
+    <!-- boton de crear registros -->
+    <a class="btn btn-primary m-2" routerLink="create"><i class="bi bi-plus-circle"></i> Crear Novedad</a>
+
+    <!--barra de busqueda de registros-->
+    <div class="row mt-4 justify-content-between mb-2">
+        <!--busqueda por categoria-->
+        <div class="col-12 col-md-5 d-flex mb-2 justify-content-center">
+            <select class="form-select" id="input-group-text">
+                <option selected>Buscar por</option>
+                <option value="1">Egreso</option>
+                <option value="2">Ingreso</option>
+            </select>
+            <button class="btn btn-success mx-2">Buscar</button>
+        </div>
+        <!-- busquedad por otros parametros -->
+        <div class="col-12 col-md-5 d-flex mb-2">
+            <input class="form-control" type="text" id="search" placeholder="Categoria, fecha, etc">
+            <button class="btn btn-success mx-2" type="submit">Search</button>
+        </div>
+    </div>
+    <!-- contenedor de registros -->
+    <h3 class="mb-3 mt-3">Lista de Novedades</h3>
+    <!-- barra separadora -->
+    <div style="height: 0.5rem;background-color:rgb(173, 173, 173);"></div>
+    <!-- registros -->
+    <div class="scrollable" style="height: 400px; overflow-y: scroll;">
+        <!-- conditional for rendering the list of records -->
+        <div *ngIf="records.length == 0">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6 col-md-3 mb-2">
+                            <p>Fecha: <span id="date">8/febrero/2023</span></p>
+                            <p>Cantidad:<span id="product-cuantity">1</span></p>
+                        </div>
+                        <div class="col-6 col-md-3 mb-2">
+                            <p>Categoria: <span id="record-category">Egreso</span></p>
+                            <p>Producto: <span id="product">Planta purificadora de agua</span></p>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="d-flex justify-content-center">
+
+                                <!-- record details -->
+                                <a class="btn btn-primary m-2" routerLink="1/details">
+                                    <i class="bi bi-eye"></i>Detalles</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--- spinner --->
+        <div class="text-center p-5" *ngIf="records.length > 0">
+            <app-spinner></app-spinner>
+        </div>
+    </div>
+
+</div>

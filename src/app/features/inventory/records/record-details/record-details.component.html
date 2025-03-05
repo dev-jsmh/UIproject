@@ -1,0 +1,125 @@
+<!--
+
+    Jhonatan Samuel Martinez Hernandez 
+    Software Analyts and Developer
+    year
+    2024
+-->
+
+<div class="container-fluid">
+    <a routerLink="../../">
+        <i class="bi-arrow-left" style="font-size: 1.5rem;font-weight: bold; color: #000;"></i>
+    </a>
+</div>
+
+
+<div class="container">
+
+    <h3 class="mb-3">Detalles del informe</h3>
+
+    <div class="row mt-5">
+        <div class="col-sm-12 col-md-6">
+            <div class="mb-3">
+                <p><strong>Id</strong> 15</p>
+            </div>
+            <div class="mb-3">
+                <p><strong>Fecha:</strong> 26 abril 2023</p>
+
+            </div>
+            <div class="mb-3">
+                <p><strong>Categoria:</strong> Egreso</p>
+
+            </div>
+            <!-- concepto del registro -->
+            <div class="mb-3">
+                <p><strong>Concepto o Razon:</strong> Garantia</p>
+            </div>
+            <div class="mb-3">
+                <h5>Descripción</h5>
+                <p>Ej. puede escribir que el motivo del egreso
+                    fue un servicio de garantia prestado a un nuevo cliente
+                </p>
+            </div>
+             <!-- ajustes y total a pagar -->
+            <div class="mb-3">
+                <p><strong>Subtotal:</strong> 195.000</p>
+            </div>
+            <div class="mb-3">
+                <p><strong>Descuento:</strong> 12.000</p>
+            </div>
+            <!-- total for pay -->
+            <div class="mb-3">
+                <p><strong>Total Por Pagar:</strong> 183.000</p>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 mt-4">
+            <!-- lista de productos -->
+            <h4>Productos requeridos</h4>
+            <div class="mb-3" style="height: 330px; overflow-y: scroll;">
+                <ul>
+                    <li>
+                        <p>P001 - planta puficador agua $150.00 X 1 </p>
+                    </li>
+                    <li>
+                        <p>P003 - Cartucho filtrante $45.000 X 1 </p>
+                    </li>
+                    <li>
+                        <p>P001 - planta puficador agua $150.00 X 1 </p>
+                    </li>
+                    <li>
+                        <p>P003 - Cartucho filtrante $45.000 X 1 </p>
+                    </li>
+                    <li>
+                        <p>P001 - planta puficador agua $150.00 X 1 </p>
+                    </li>
+                    <li>
+                        <p>P003 - Cartucho filtrante $45.000 X 1 </p>
+                    </li>
+                    <li>
+                        <p>P001 - planta puficador agua $150.00 X 1 </p>
+                    </li>
+                    <li>
+                        <p>P003 - Cartucho filtrante $45.000 X 1 </p>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="col-12 mb-4 text-center">
+        <!-- modal triger example-->
+        <button class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#modalForValidateDelete"><i
+                class="bi bi-trash">eliminar</i>
+        </button>
+
+        <!-- record update view -->
+        <a class="btn btn-primary m-2" routerLink="../update">
+            <i class="bi bi-pencil"></i>Modificar</a>
+        <!-- back button dashboard -->
+        <a class="btn btn-success" routerLink="../../">Volver</a>
+    </div>
+</div>
+
+
+<!-- modal to confirm record removal -->
+<div class="modal fade" id="modalForValidateDelete" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">validar acción</h4>
+                <!-- button for close modal windows -->
+                <button class="btn btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+            </div>
+
+            <div class="modal-body">
+                <p>Estas seguro que quieres realizar esta acción</p>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary">Aceptar</button>
+                <button class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
