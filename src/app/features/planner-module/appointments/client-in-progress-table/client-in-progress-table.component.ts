@@ -15,7 +15,18 @@ import { NgFor } from '@angular/common';
 })
 export class ClientInProgressTableComponent {
 
-  appointmentsInProgress: any = [];
+  appointmentsInProgress: any = [
+    {
+      date: "2025-02-01",
+      hour: "10:01:02",
+      client: {
+        names: "Jhonatan",
+        neighborhood: {
+          name: "Los caracoles"
+        }
+      }
+    }
+  ];
 
 
   constructor(private appointmentService: AppointmentService ){
