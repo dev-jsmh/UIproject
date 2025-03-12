@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { ClientModel } from '../../../../../models/client-model';
-import { ClientService } from '../../../../../service/client.service';
+import { ClientModel } from '../../../../models/client-model';
+import { ClientService } from '../../../../service/client.service';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({

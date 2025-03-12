@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AppointmentService } from '../../../../../service/appointment.service'
+import { AppointmentService } from '../../../../service/appointment.service'
 import { NgFor } from '@angular/common';
 
 @Component({

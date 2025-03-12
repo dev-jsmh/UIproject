@@ -10,7 +10,6 @@ export const routes: Routes = [
     {path:'planner', loadChildren: () => import('./features/planner-module/client-scheduler-routing.module').then(mod => mod.ClientSchedulerRoutingModule)},
     {path: 'inventory', loadChildren: () => import('./features/inventory/inventory-routing.module').then( mod => mod.InventoryRoutingModule ) },
     {path: '**', component: PageNotFoundComponent}
-
 ];
 
 

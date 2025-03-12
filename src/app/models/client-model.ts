@@ -4,17 +4,17 @@ import { ProductModel } from "./product-model";
 
 export class ClientModel {
 
-     id!: Number;
-     dni!: Number;
-     names!: String;
-     lastNames!: String;
-     phone!: String;
-     address!: String;
+     id!: number;
+     dni!: number;
+     names!: string;
+     lastNames!: string;
+     phone!: string;
+     address!: string;
      neighborhood!: NeighborhoodModel;
-     lastMaintenance!: String;
-     nextMaintenance!: String;
-     hasBeenServed!: Boolean;
-     image!: String;
+     lastMaintenance!: string;
+     nextMaintenance!: string;
+     hasBeenServed: boolean = false;
+     image!: string;
      purchased_services!: ServiceModel[];
      products!: ProductModel[];
 

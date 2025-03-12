@@ -1,5 +1,3 @@
-import { Component } from '@angular/core';
-
 /**
  * Jhonatan Samuel Martinez Hernandez
  * Software Analyst and Developer
@@ -7,17 +5,13 @@ import { Component } from '@angular/core';
  * May 
  */
 
-import { ClientSearchFormComponent } from '../../../shared/client-search-form/client-search-form.component'
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-
 import { FormsModule } from '@angular/forms';
-
-// ** imports related to client table 
-
 import { NgFor, NgIf } from '@angular/common';
-import { ClientModel } from '../../../../../models/client-model';
-import { ClientService } from '../../../../../service/client.service';
-import { SpinnerComponent } from '../../../../../core/spinner/spinner.component';
+import { ClientModel } from '../../../../models/client-model';
+import { ClientService } from '../../../../service/client.service';
+import { SpinnerComponent } from '../../../../core/spinner/spinner.component';
 
 
 
@@ -27,7 +21,6 @@ import { SpinnerComponent } from '../../../../../core/spinner/spinner.component'
   standalone: true,
   imports: [
     RouterLink,
-    ClientSearchFormComponent,
     NgFor,
     NgIf,
     SpinnerComponent,
