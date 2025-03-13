@@ -25,7 +25,6 @@
     <table class="table table-dark table-striped">
         <thead>
             <tr>
-                <th scope="col">Cc</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellido</th>
                 <th scope="col">Barrio</th>
@@ -35,17 +34,14 @@
         <tbody>
             <tr *ngFor="let client of filteredClients">
                 <!-- ==================  Here go the clients  ============-->
-
-                <th scope="row">{{client?.id}}</th>
                 <td>{{client?.names}}</td>
                 <td>{{client?.lastNames}}</td>
                 <td>{{client?.neighborhood?.name }}</td>
                 <td>
-                    <!-- client details boton -->
-                    <!-- pass the id of the client in to the route -->
                     <a class="btn btn-info m-1" routerLink="{{client?.id}}/details"><i class="bi bi-eye"></i></a>
-                    <!--<a type="button" data-bs-toggle="modal" data-bs-target="#clientModal"><i class="bi bi-trash"></i></a>
-                   -->
+                    <a class="btn btn-info m-1" routerLink="{{client?.id}}/modify"><i class="bi bi-pencil"></i></a>
+                    <a class="btn btn-info m-1" routerLink="{{client?.id}}/create-appointment"><i
+                            class="bi bi-calendar"></i></a>
                 </td>
             </tr>
             <!-- ==================  Here go the clients ============-->

@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { BackButtonComponent } from '../shared/back-button/back-button.component';
-import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { ClientService } from '../../../service/client.service';
-import { NeighborhoodService } from '../../../service/neighborhood.service';
 import { Location, NgFor, NgIf } from '@angular/common';
-import { NeighborhoodModel } from '../../../models/neighborhood-model';
-import { ClientModel } from '../../../models/client-model';
+import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { NeighborhoodModel } from '../../../../models/neighborhood-model';
+import { ClientService } from '../../../../service/client.service';
+import { NeighborhoodService } from '../../../../service/neighborhood.service';
 
 @Component({
   selector: 'app-create-client',

@@ -3,11 +3,11 @@
 
 import { Component } from '@angular/core';
 import { NavigationBarClientsComponent } from '../shared/navigationBar/navigation-bar-clients/navigation-bar-clients.component';
-import { ClientService } from '../../../service/client.service';
 import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { BackButtonComponent } from '../shared/back-button/back-button.component';
 import { Location, NgFor, NgIf } from '@angular/common';
-import { ClientModel } from '../../../models/client-model';
+import { ClientModel } from '../../../../models/client-model';
+import { ClientService } from '../../../../service/client.service';
 
 
 @Component({

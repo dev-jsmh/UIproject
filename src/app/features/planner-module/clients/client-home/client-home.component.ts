@@ -1,13 +1,9 @@
 import { Component } from '@angular/core';
-import { NavigationBarClientsComponent } from '../shared/navigationBar/navigation-bar-clients/navigation-bar-clients.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { ClienteModalComponent } from '../shared/cliente-modal/cliente-modal.component';
-import { ClientModel } from '../../../models/client-model';
-import { ClientService } from '../../../service/client.service';
 import { NgFor, NgIf } from '@angular/common';
-
-// ==== spinner ====
-import { SpinnerComponent } from '../../../core/spinner/spinner.component';
+import { SpinnerComponent } from '../../../../core/spinner/spinner.component';
+import { ClientModel } from '../../../../models/client-model';
+import { ClientService } from '../../../../service/client.service';
 
 @Component({
   selector: 'app-client-home',
@@ -17,8 +13,6 @@ import { SpinnerComponent } from '../../../core/spinner/spinner.component';
     RouterLink,
     NgFor,
     NgIf,
-    NavigationBarClientsComponent,
-    ClienteModalComponent,
     SpinnerComponent
   ],
   templateUrl: './client-home.component.html',
@@ -26,12 +20,18 @@ import { SpinnerComponent } from '../../../core/spinner/spinner.component';
 })
 export class ClientHomeComponent {
 
+  public clients: ClientModel[] = [];
 
-
-  clients: ClientModel[] = [];
-  // an array for store the filtered clients
-  filteredClients: ClientModel[] = [];
-
+  public filteredClients: any[] = [
+    {
+      id: 1,
+      names: "Jhonatan Samuel",
+      lastNames: "Martinez",
+      neighborhood: {
+        name: "Los caracoles"
+      }
+    }
+  ];
   public isLoaded: Boolean = false;
 
   /**
@@ -41,11 +41,9 @@ export class ClientHomeComponent {
 
   constructor(private clientService: ClientService) {
 
-    this.loadClients();
+    // this.loadClients();
 
   }
-
-
   // make get request to api endpoint and loads the existing clients from data base
   loadClients() {
     this.clientService.getClients().subscribe({
@@ -82,14 +80,14 @@ export class ClientHomeComponent {
       this.filteredClients = this.clients;
     }
     else {
-     this.filteredClients = this.clients.filter(
+      this.filteredClients = this.clients.filter(
         client => {
           client?.names
             .toLowerCase()
             .includes(value.toLowerCase())
 
         });
-       }
+    }
 
   }
 

@@ -31,8 +31,9 @@ const routes: Routes = [
     path: '', component: PlannerRootPageComponent,
     children: [
       // show a table with all clients so we can create a new appointment a a desired one 
-      { path: 'client-list', component: PlannerClientTableComponent },
-      { path: 'client-list/:id/create-appointment', component: PlannerCreateAppointmentComponent },
+      //{ path: 'clients', component: PlannerClientTableComponent },
+      {path: "clients", loadChildren: () => import('../../features/planner-module/clients/client-routing.module').then( m => m.ClientRoutsModule) },
+      { path: 'clients/:id/create-appointment', component: PlannerCreateAppointmentComponent },
       { // ============== appointments routes ==============
         // route: planner/appointments/
         path: 'appointments',
@@ -51,9 +52,8 @@ const routes: Routes = [
         path: 'calendar', component: CalendarHomeComponent },
       {// redirect to the client component in case there 
         //is no route defined
-        path: '', redirectTo: 'client-list', pathMatch: 'full'
+        path: '', redirectTo: 'clients', pathMatch: 'full'
       }
-
     ]
   },
 

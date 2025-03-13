@@ -3,14 +3,14 @@
 
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { ClientService } from '../../../service/client.service';
 import { BackButtonComponent } from '../shared/back-button/back-button.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ClientModel } from '../../../models/client-model';
-import { NeighborhoodModel } from '../../../models/neighborhood-model';
-import { NeighborhoodService } from '../../../service/neighborhood.service';
 import { Location, NgFor } from '@angular/common';
 import { ClienteModalComponent } from '../shared/cliente-modal/cliente-modal.component';
+import { ClientModel } from '../../../../models/client-model';
+import { NeighborhoodModel } from '../../../../models/neighborhood-model';
+import { ClientService } from '../../../../service/client.service';
+import { NeighborhoodService } from '../../../../service/neighborhood.service';
 
 
 @Component({
