@@ -10,13 +10,13 @@ export class ClientModel {
      lastNames!: string;
      phone!: string;
      address!: string;
-     neighborhood!: NeighborhoodModel;
-     lastMaintenance!: string;
-     nextMaintenance!: string;
+     neighborhood?: NeighborhoodModel;
+     lastMaintenance?: string = undefined;
+     nextMaintenance?: string = undefined;
      hasBeenServed: boolean = false;
-     image!: string;
-     purchased_services!: ServiceModel[];
-     products!: ProductModel[];
+     image?: string = undefined;
+     purchased_services?: ServiceModel[];
+     products?: ProductModel[];
 
 }
 

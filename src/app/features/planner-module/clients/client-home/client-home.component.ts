@@ -22,16 +22,7 @@ export class ClientHomeComponent {
 
   public isLoaded: Boolean = false;
   public clients: ClientModel[] = [];
-  public filteredClients: any[] = [
-    {
-      id: 1,
-      names: "Jhonatan Samuel",
-      lastNames: "Martinez",
-      neighborhood: {
-        name: "Los caracoles"
-      }
-    }
-  ];
+  public filteredClients: any[] = this.clientService.clientTestCollection;
 
   constructor(private clientService: ClientService) {
 
