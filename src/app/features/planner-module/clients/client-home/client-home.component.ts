@@ -20,8 +20,8 @@ import { ClientService } from '../../../../service/client.service';
 })
 export class ClientHomeComponent {
 
+  public isLoaded: Boolean = false;
   public clients: ClientModel[] = [];
-
   public filteredClients: any[] = [
     {
       id: 1,
@@ -32,20 +32,14 @@ export class ClientHomeComponent {
       }
     }
   ];
-  public isLoaded: Boolean = false;
-
-  /**
-   * Inject the clientService class as a dependency
-   * for the clients component
-   */
 
   constructor(private clientService: ClientService) {
 
-    // this.loadClients();
+    this.loadClients();
 
   }
   // make get request to api endpoint and loads the existing clients from data base
-  loadClients() {
+  public loadClients() {
     this.clientService.getClients().subscribe({
       next: (res: any) => {
         this.clients = res;
@@ -60,7 +54,7 @@ export class ClientHomeComponent {
     });
   }
   // deletes a specified client by its id number
-  deleteClient(id: Number) {
+  public deleteClient(id: Number) {
     this.clientService.deleteClient(id).subscribe(
       {
         next: (res: any) => {
@@ -75,7 +69,7 @@ export class ClientHomeComponent {
   }
 
 
-  onFilter(value: String) {
+  public onFilter(value: String) {
     if (!value) {
       this.filteredClients = this.clients;
     }
@@ -88,6 +82,41 @@ export class ClientHomeComponent {
 
         });
     }
+  }
+
+  public validateStatus(client: ClientModel) {
+
+    const lastmaintenance = client.lastMaintenance;
+    const nextmaintenance = client.nextMaintenance;
+    const hasBeenServed = client.hasBeenServed;
+
+    // has not been served ever
+    if (lastmaintenance == "" || lastmaintenance == null) {
+      return "color: red";
+    }
+
+    // is not schedule
+    if (nextmaintenance == "" || nextmaintenance == null) {
+      return "color: orange";
+    }
+
+    const nextDate = new Date(nextmaintenance);
+    const lastDate = new Date(lastmaintenance);
+    const diff = nextDate.getTime() - Date.now();
+    const diffdays = diff / (1000 * 60 * 60 * 24);
+
+    // wating to be served
+    if (nextmaintenance !== null && !hasBeenServed && diffdays <= 7) {
+      return "color: yellow";
+    }
+
+    // has been served
+    if (lastDate.getTime() < Date.now() && nextDate.getTime() > Date.now() && hasBeenServed == true) {
+      return "color: green";
+    }
+
+    // not defined
+    return "color: ffffff";
 
   }
 

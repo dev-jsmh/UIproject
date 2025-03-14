@@ -14,7 +14,6 @@ import { AppointmentDetailsComponent } from './appointments/appointment-details/
 import { CreateAppointmentInvoiceComponent } from './appointments/create-appointment-invoice/create-appointment-invoice.component';
 import { PlannerRootPageComponent } from './planner/planner-root-page/planner-root-page.component';
 import { PlannerCreateAppointmentComponent } from './planner/planner-create-appointment/planner-create-appointment.component';
-import { PlannerClientTableComponent } from './planner/planner-client-table/planner-client-table.component';
 
 /***
  * module 
