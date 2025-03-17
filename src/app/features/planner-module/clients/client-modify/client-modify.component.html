@@ -1,65 +1,71 @@
 <!-- this component have a form that allows me to modify the client data -->
-
 <!-- Jhonatan samuel Martinez Hernandez -->
 <!-- form to modify clients -->
-<app-back-button></app-back-button>
+<a routerLink="../../" style="font-size: 30px; font-weight: bold; text-decoration: none; color: black">
+    <i class="bi bi-arrow-left"></i>
+</a>
 
-<form [formGroup]="modifyClient" (submit)="submitClient()" >
-    <div class="row mt-2">
-        <div class="col-md-6 col-12">
-            <div class="md-3">
-                <label class="form-label" for="id">Id:</label>
-                <input class="form-control" id="id" type="text" formControlName="id" >
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="client_id_card">CC</label>
-                <input class="form-control" id="client_id_card" type="text" formControlName="dni">
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="client_firstname">Primer nombre</label>
-                <input class="form-control" id="client_firstname" type="text" formControlName="names">
-            </div>
-           
-            <div class="mb-3">
-                <label class="form-label" for="client_last_names">Segundo apellido</label>
-                <input class="form-control" id="client_last_names" type="text" formControlName="lastNames">
-
-            </div>
-        </div>
-        <div class="col-md-6 col-12">
-            <div class="mb-3">
-                <label class="form-label" for="client_phone">Teléfono</label>
-                <input class="form-control" id="client_phone" type="text" formControlName="phone">
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="client_address">Dirección</label>
-                <input class="form-control" id="client_address" type="text" formControlName="address">
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="client_neighborhood">Barrio</label>
-                <select class="form-select" id="client_neighborhood" formControlName="neighborhood">
-                    <!-- ========= set as default value the neighborhood assiged previously to the client ===== -->
-                   
-                    <option selected>{{desiredClient?.neighborhood?.name}}</option>
-                    <!-- ========= generate a list for the available neighborhoods -->
-                    <option *ngFor="let n of neighborhoods" value="{{n?.id}}" >{{n?.name}}</option>
-                   
-                </select>
-            </div>
-            <!-- this section here is for those cases when we need to add a client 
-                but its neighborhood isn't registered in the data base-->
-            <div class="mb-3">
-                <label class="form-label" for="client_add_neighborhood">Añadir Otro barrio</label>
-                <input class="form-control" id="client_add_neighborhood" type="text">
-            </div>
-    
-        </div>
+<div class="card">
+    <div class="card-header">
+        <h3>Actualizar datos</h3>
     </div>
-    <!-- this part here has the submit button and the cancel button -->
-    <div class="mb-3 text-center">
-        <button class="btn btn-success m-1" type="submit">Aceptar</button>
-        <a class="btn btn-danger m-1" (click)="goBack()" >Cancelar</a>
+    <div class="card-body">
+        <form [formGroup]="modifyClient">
+            <div class="row mt-2">
+                <div class="col-md-6 col-12">
+                    <div class="md-3">
+                        <label class="form-label" for="id">Id:</label>
+                        <input class="form-control" id="id" type="text" formControlName="id" >
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="client_id_card">CC</label>
+                        <input class="form-control" id="client_id_card" type="text" formControlName="dni">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="client_firstname">Primer nombre</label>
+                        <input class="form-control" id="client_firstname" type="text" formControlName="names">
+                    </div>
+                   
+                    <div class="mb-3">
+                        <label class="form-label" for="client_last_names">Segundo apellido</label>
+                        <input class="form-control" id="client_last_names" type="text" formControlName="lastNames">
+        
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="mb-3">
+                        <label class="form-label" for="client_phone">Teléfono</label>
+                        <input class="form-control" id="client_phone" type="text" formControlName="phone">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="client_address">Dirección</label>
+                        <input class="form-control" id="client_address" type="text" formControlName="address">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="client_neighborhood">Barrio</label>
+                        <select class="form-select" id="client_neighborhood" formControlName="neighborhood">
+                            <!-- ========= set as default value the neighborhood assiged previously to the client ===== -->
+                           
+                            <option selected>{{desiredClient?.neighborhood?.name}}</option>
+                            <!-- ========= generate a list for the available neighborhoods -->
+                            <option *ngFor="let n of neighborhoods" value="{{n?.id}}" >{{n?.name}}</option>
+                           
+                        </select>
+                    </div>
+                    <!-- this section here is for those cases when we need to add a client 
+                        but its neighborhood isn't registered in the data base-->
+                    <div class="mb-3">
+                        <label class="form-label" for="client_add_neighborhood">Añadir Otro barrio</label>
+                        <input class="form-control" id="client_add_neighborhood" type="text">
+                    </div>
+            
+                </div>
+            </div>
+            <!-- this part here has the submit button and the cancel button -->
+            <div class="mb-3 text-center">
+                <button class="btn btn-success m-1" type="button" (click)="submitClient()">Aceptar</button>
+                <a class="btn btn-danger m-1" routerLink="../">Cancelar</a>
+            </div>
+        </form>
     </div>
-</form>
-
-<!--<app-client-modify message=modalMessage [title]="'modalTitle'"></app-client-modify>-->
+</div>

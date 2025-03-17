@@ -12,38 +12,40 @@ export class ClientService {
 
   // A list of all clients that exist
   public clients: ClientModel[] = [];
-  public clientTestCollection: ClientModel[] = [
+  public clientTestCollection: any[] = [
     {
+      "id": 1,
+      "dni": 1,
+      "phone": "7777777",
+      "names": "Jhonatan Samuel",
+      "lastNames": "Martinez Hernandez",
+      "address": "calle 23 #00",
+      "image": "",
+      "lastMaintenance": undefined,
+      "nextMaintenance": "2025-03-19",
+      "hasBeenServed": false,
+      "neighborhood": {
         "id": 1,
-        "dni": 1,
-        "phone": "7777777",
-        "names": "Jhonatan Samuel",
-        "lastNames": "Martinez Hernandez",
-        "address": "calle 23 #00",
-        "image": "",
-        "lastMaintenance": undefined,
-        "nextMaintenance": "2025-03-19",
-        "hasBeenServed": false,
-        "neighborhood": {
-            "id": 1,
-            "name": "Blas de lezo"
-        }
+        "name": "Blas de lezo"
+      },
+      "purchased_services": []
     },
     {
-        "id": 2,
-        "dni": 435234,
-        "phone": "na",
-        "names": "Luisa",
-        "lastNames": "Hernandez",
-        "address": "na",
-        "image": "na",
-        "lastMaintenance": "2024-01-04",
-        "nextMaintenance": "2025-03-13",
-        "hasBeenServed": false,
-        "neighborhood": {
-            "id": 1,
-            "name": "Blas de lezo"
-        }
+      "id": 2,
+      "dni": 435234,
+      "phone": "na",
+      "names": "Luisa",
+      "lastNames": "Hernandez",
+      "address": "na",
+      "image": "na",
+      "lastMaintenance": "2024-01-04",
+      "nextMaintenance": "2025-03-13",
+      "hasBeenServed": false,
+      "neighborhood": {
+        "id": 1,
+        "name": "Blas de lezo"
+      },
+      "purchased_services": []
     },
     {
       "id": 3,
@@ -60,40 +62,42 @@ export class ClientService {
         "id": 1,
         "name": "Blas de lezo"
       },
-      purchased_services: [],
-      products: []
+      "purchased_services": [],
+      "products": []
     },
     {
-        "id": 4,
-        "dni": 5456,
-        "phone": "na",
-        "names": "Andres",
-        "lastNames": "Correa",
-        "address": "na",
-        "image": "na",
-        "lastMaintenance": "2025-02-03",
-        "nextMaintenance": "2025-07-03",
-        "hasBeenServed": true,
-        "neighborhood": {
-            "id": 1,
-            "name": "Blas de lezo"
-        }
+      "id": 4,
+      "dni": 5456,
+      "phone": "na",
+      "names": "Andres",
+      "lastNames": "Correa",
+      "address": "na",
+      "image": "na",
+      "lastMaintenance": "2025-02-03",
+      "nextMaintenance": "2025-07-03",
+      "hasBeenServed": true,
+      "neighborhood": {
+        "id": 1,
+        "name": "Blas de lezo"
+      },
+      "purchased_services": []
     },
     {
-        "id": 5,
-        "dni": 344645,
-        "phone": "323453543",
-        "names": "Isabela",
-        "lastNames": "Gutierrez",
-        "address": "calle 23",
-        "image": undefined,
-        "lastMaintenance": "2025-03-08",
-        "nextMaintenance": undefined,
-        "hasBeenServed": false,
-        "neighborhood": {
-            "id": 1,
-            "name": "Blas de lezo"
-        }
+      "id": 5,
+      "dni": 344645,
+      "phone": "323453543",
+      "names": "Isabela",
+      "lastNames": "Gutierrez",
+      "address": "calle 23",
+      "image": undefined,
+      "lastMaintenance": "2025-03-08",
+      "nextMaintenance": undefined,
+      "hasBeenServed": false,
+      "neighborhood": {
+        "id": 1,
+        "name": "Blas de lezo"
+      },
+      "purchased_services": []
     }
 ]
 

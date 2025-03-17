@@ -1,15 +1,21 @@
-<app-back-button></app-back-button>
+<a routerLink="../../" class="mt-3" style="font-size: 30px; font-weight: bold; color: black">
+    <i class="bi bi-arrow-left"></i>
+</a>
+
 <!-- informacion del cliente-->
-<div class="row  mb-2 border">
-    <h3 class="text-center">Detalles del cliente</h3>
-    <!-- foto del cliente -->
-    <div class="col-md-4 mb-3">
-        <img style="max-width: 13rem; height: auto;" src="" alt="client_profile_foto">
+<div class="card">
+    <div class="card-header">
+        <h3>Detalles del cliente</h3>
     </div>
-    <div class="col-md-8 mb-3">
-        <!-- información basica del cliente -->
-        <div class="col-12 col-md-9 px-2 mb-3">
-            <div class="row">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <!-- foto del cliente -->
+                <div class="col-md-6 mb-3">
+                    <img style="max-width: 13rem; height: auto;"
+                        src="../../../../../assets/images/costumer_image_test.jpg" alt="client_profile_foto">
+                </div>
+                <!-- información basica del cliente -->
                 <div class="mb-3">
                     id: {{clientId}}
                 </div>
@@ -37,7 +43,7 @@
                     </p>
                 </div>
                 <div class="mb-3">
-                    Fecha proximo mantenimiento: 
+                    Fecha proximo mantenimiento:
                     <!-- conditional to validate if client has been schedule for any date to be serve -->
                     <p *ngIf="client?.nextMaintenance !== null">
                         {{client?.nextMaintenance}}
@@ -56,60 +62,28 @@
                     </button>
                 </div>
             </div>
-        </div>
-    </div>
-
-</div>
-<!-- lista de productos y servicios -->
-<div class="row justify-content-center">
-    <!-- lista de productos adquiridos por el cliente -->
-    <div class="col-12 col-md-5 border innerMargin">
-        <h3 class="mt-4">Lista de productos adquiridos</h3>
-        <div class="scrollable" style="height:300px; overflow-y: scroll;">
-
-            <div *ngIf="clientHasProducts; else noProducts">
-                <p>productos comprados</p>
+            <div class="col-md-8">
+                <h3 class="mt-4">Lista de servicios adquiridos</h3>
+                <!-- scrollable container for the services the client has been charge for -->
+                <div style="height:300px; overflow-y: scroll;">
+                    <!-- shows a view if there exists services bought for the client -->
+                    <div *ngIf="clientHasServices; else noServices">
+                        <div *ngFor="let service of clientPurchasedServices" class="mb-3 d-flex">
+                            <p>{{service?.service_id}}</p>
+                            <p>{{service?.date}}</p>
+                            <p>{{service?.description}}</p>
+                            <p>{{service?.estimate_value}}</p>
+                        </div>
+                    </div>
+                    <!---- end of the if condicional statement -->
+                    <ng-template #noServices><!-- start of default themplate for the if statement-->
+                        <div class="d-flex justify-content-center align-items-center my-4">
+                            <p class="py-5">This Client has not requests any service untill the moment</p>
+                        </div>
+                    </ng-template>
+                    <!-- End of default themplate for the if statement-->
+                </div>
             </div>
-
-            <ng-template #noProducts>
-                <div class=" d-flex justify-content-center align-items-center my-4">
-                    <p class="py-5">No ha comprado productos al momento</p>
-                </div>
-            </ng-template>
-
-
         </div>
-    </div>
-
-    <div class=" col-12 col-md-5 border innerMargin">
-        <!-- lista de servicios adquiridos por el cliente -->
-        <h3 class="mt-4">Lista de servicios adquiridos</h3>
-        <!-- scrollable container for the services the client has been charge for -->
-        <div style="height:300px; overflow-y: scroll;">
-
-            <!-- shows a view if there exists services bought for the client -->
-            <div *ngIf="clientHasServices; else noServices">
-
-                <div *ngFor="let service of client?.purchased_services" class="mb-3 d-flex">
-                    <p>{{service?.service_id}}</p>
-                    <p>{{service?.date}}</p>
-                    <p>{{service?.description}}</p>
-                    <p>{{service?.estimate_value}}</p>
-
-                </div>
-
-            </div> <!---- end of the if condicional statement -->
-
-            <ng-template #noServices><!-- start of default themplate for the if statement-->
-                <div class="d-flex justify-content-center align-items-center my-4">
-                    <p class="py-5">This Client has not requests any service untill the moment</p>
-
-                </div>
-            </ng-template>
-            <!-- End of default themplate for the if statement-->
-        </div>
-
     </div>
 </div>
-
-<!-- Modal to confir client deletiticon -->

@@ -15,7 +15,7 @@ export class ClientModel {
      nextMaintenance?: string = undefined;
      hasBeenServed: boolean = false;
      image?: string = undefined;
-     purchased_services?: ServiceModel[];
+     purchased_services: ServiceModel[] = [];
      products?: ProductModel[];
 
 }

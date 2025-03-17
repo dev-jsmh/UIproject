@@ -1,4 +1,4 @@
-<div class="modal" >
+<div class="modal">
     <div class="modal-header">
 
     </div>
@@ -6,71 +6,86 @@
         <p>Verifique que los datos ingresados sean correctos antes de continuar</p>
     </div>
 </div>
-<app-back-button color="success" icon="bt bt-arrow-left" ></app-back-button>
+<!---------------- take user to client dashboard ---------------->
+<a class="mt-3" routerLink="../" style="font-size: 30px; font-weight: bold; text-decoration: none; color: black">
+    <i class="bi bi-arrow-left"></i>
+</a>
 
-<!-- form to create clients -->
-<form [formGroup]="createClientForm" (submit)="onSubmit()">
-    <div class="row mt-2">
-        <div class="col-md-6 col-12">
-            <div class="mb-3">
-                <label class="form-label" for="client_id_card">CC</label>
-                <input class="form-control" id="client_id_card" type="text" formControlName="dni" maxlength="10" >
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="client_firstname">Nombres</label>
-                <input class="form-control" id="client_firstname" type="text" formControlName="names" registered>
-                <!-- alert if the name is not filled -->
-                <div *ngIf=" names?.touched && names?.invalid || ( emptyOnSubmit && names?.invalid ) " class="alert alert-warning fade show mt-3">
-                    <p>Este campo es obligatorio</p>
+<div class="card mt-3">
+    <div class="card-header">
+        <h3>Añadir nuevo cliente</h3>
+    </div>
+    <div class="card-body">
+        <!-- form to create clients -->
+        <form [formGroup]="createClientForm">
+            <div class="row mt-2">
+                <div class="col-md-6 col-12">
+                    <div class="mb-3">
+                        <label class="form-label" for="client_id_card">CC</label>
+                        <input class="form-control" id="client_id_card" type="text" formControlName="dni"
+                            maxlength="10">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="client_firstname">Nombres</label>
+                        <input class="form-control" id="client_firstname" type="text" formControlName="names"
+                            registered>
+                        <!-- alert if the name is not filled -->
+                        <div *ngIf=" names?.touched && names?.invalid || ( emptyOnSubmit && names?.invalid ) "
+                            class="alert alert-warning fade show mt-3">
+                            <p>Este campo es obligatorio</p>
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="client_secund_lastname">Apellidos</label>
+                        <input class="form-control" id="client_secund_lastname" type="text" formControlName="lastNames">
+                    </div>
                 </div>
+                <div class="col-md-6 col-12">
+                    <div class="mb-3">
+                        <label class="form-label" for="client_phone">Teléfono</label>
+                        <input class="form-control" id="client_phone" type="text" formControlName="phone"
+                            maxlength="10">
+                        <!-- alert if the phone is not filled-->
+                        <div *ngIf="phone?.touched && phone?.invalid || (emptyOnSubmit && phone?.invalid ) "
+                            class="alert alert-warning fade show mt-3">
+                            <p>Este campo es obligatorio</p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="client_address">Dirección</label>
+                        <input class="form-control" id="client_address" type="text" formControlName="address">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="client_neighborhood">Barrio</label>
+                        <select class="form-select" id="client_neighborhood" formControlName="neighborhood" required>
+                            <option selected>---</option>
+                            <!-- generate a list for all the neighborhoods that exists in the data base -->
+                            <option *ngFor="let n of neighborhoods" value="{{n.id}}">{{n.name}}</option>
 
-            </div>
-           
-            <div class="mb-3">
-                <label class="form-label" for="client_secund_lastname">Apellidos</label>
-                <input class="form-control" id="client_secund_lastname" type="text" formControlName="lastNames">
-            </div>
-        </div>
-        <div class="col-md-6 col-12">
-            <div class="mb-3">
-                <label class="form-label" for="client_phone">Teléfono</label>
-                <input class="form-control" id="client_phone" type="text" formControlName="phone" maxlength="10" >
-                <!-- alert if the phone is not filled-->
-                <div *ngIf="phone?.touched && phone?.invalid || (emptyOnSubmit && phone?.invalid ) " class="alert alert-warning fade show mt-3">
-                    <p>Este campo es obligatorio</p>
-                </div>
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="client_address">Dirección</label>
-                <input class="form-control" id="client_address" type="text" formControlName="address">
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="client_neighborhood">Barrio</label>
-                <select class="form-select" id="client_neighborhood" formControlName="neighborhood" required>
-                    <option selected>---</option>
-                    <!-- generate a list for all the neighborhoods that exists in the data base -->
-                    <option *ngFor="let n of neighborhoods" value="{{n.id}}">{{n.name}}</option>
+                        </select>
+                        <!-- alert if a neighborhood is not selected from the list-->
+                        <div *ngIf="neighborhood?.touched && neighborhood?.value === '---' || (emptyOnSubmit && neighborhood?.invalid ) "
+                            class="alert alert-warning">
+                            <p>Este campo es obligatorio</p>
+                        </div>
 
-                </select>
-                <!-- alert if a neighborhood is not selected from the list-->
-                <div *ngIf="neighborhood?.touched && neighborhood?.value === '---' || (emptyOnSubmit && neighborhood?.invalid ) " class="alert alert-warning">
-                    <p>Este campo es obligatorio</p>
-                </div>
-
-            </div>
-            <!-- this section here is for those cases when we need to add a client 
+                    </div>
+                    <!-- this section here is for those cases when we need to add a client 
                 but its neighborhood isn't registered in the data base-->
-            <div class="mb-3">
-                <label class="form-label" for="client_add_neighborhood">Añadir Otro barrio</label>
-                <input class="form-control" id="client_add_neighborhood" type="text">
-            </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="client_add_neighborhood">Añadir Otro barrio</label>
+                        <input class="form-control" id="client_add_neighborhood" type="text">
+                    </div>
 
+                </div>
+            </div>
+        </form>
+         <!-- this part here has the submit button and the cancel button -->
+         <div class="mb-3 text-center">
+            <button class="btn btn-success mx-2" type="button" (click)="onSubmit()"><i class="bi bi-floppy"></i></button>
+            <a class="btn btn-danger m-1" routerLink="../">Cancelar</a>
         </div>
     </div>
-    <!-- this part here has the submit button and the cancel button -->
-    <div class="mb-3 text-center">
-        <button class="btn btn-success m-1" type="submit">Añadir</button>
-        <a class="btn btn-danger m-1" routerLink="../" >Cancelar</a>
-
-    </div>
-</form>
+</div>
